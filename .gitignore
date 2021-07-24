@@ -1,0 +1,12 @@
+
+# general
+.DS_Store
+*.orig
+
+# npm/pnpm
+/node_modules/
+!/src/node_modules/
+.pnpm-debug.log
+
+# build
+/dist/

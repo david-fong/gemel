@@ -1,0 +1,80 @@
+{
+    "files.exclude": {
+        // generic excludes:
+        "node_modules/{[^.@]*,}": true,
+        "package-lock.json": true,
+        "pnpm-lock.yaml": true,
+        "**/tsconfig.tsbuildinfo": true,
+
+        // things that I might like to toggle:
+        // "**/*tsconfig*.json": true,
+        "{**/.eslintrc.*,.eslintignore}": true,
+        "dist/**/*.map": true,
+        "node_modules/": true,
+    },
+    "search.exclude": {
+        "node_modules/": true,
+        "**/*.code-search": true,
+
+        "**/*tsconfig*.json": false,
+        "{**/.eslintrc.*,.eslintignore}": false,
+    },
+    "files.associations": {
+        "**/dist/{client,server}/**/*.js": "text", // Loads bundled js much faster.
+        ".eslintignore": "ignore",
+    },
+    "json.schemas": [
+        {
+            "fileMatch": [ "*tsconfig*.json" ],
+            "url": "http://json.schemastore.org/tsconfig",
+        },{
+            "fileMatch": [ "*cSpell.json" ],
+            "url": "https://raw.githubusercontent.com/streetsidesoftware/cspell/cspell4/cspell.schema.json",
+        },{
+            "fileMatch": [ "*.webmanifest" ],
+            "url": "http://json.schemastore.org/web-manifest",
+        },{
+            "fileMatch": [ "*package*.json" ],
+            "url": "https://json.schemastore.org/package",
+        }
+    ],
+
+    "files.trimTrailingWhitespace": true,
+
+    "typescript.tsdk": "./node_modules/typescript/lib",
+    "typescript.enablePromptUseWorkspaceTsdk": true,
+    "typescript.preferences.importModuleSpecifier": "non-relative",
+
+    "todo-tree.filtering.useBuiltInExcludes": "file excludes",
+    "todo-tree.general.tags": [
+        "TODO.wait"  ,
+        "TODO.learn" ,
+        "TODO.design",
+        "TODO.doc"   ,
+        "TODO.impl"  ,
+        "TODO.test"  ,
+        "TODO.build" ,
+        "TODO",
+    ],
+
+    "css.lint.validProperties": [
+        "composes",
+    ],
+
+    "javascript.suggest.autoImports": false,
+    "[javascript]": {
+        "editor.insertSpaces": false,
+    },
+    "[typescript]": {
+        "editor.insertSpaces": false,
+    },
+    "[typescriptreact]": {
+        "editor.insertSpaces": false,
+    },
+    "[css]": {
+        "editor.insertSpaces": false,
+    },
+    "[html]": {
+        "editor.insertSpaces": false,
+    },
+ }
