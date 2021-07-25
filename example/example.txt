@@ -1,0 +1,51 @@
+
+"""
+base
+client
+   area1
+      markup
+      styling
+      logic
+   area2
+      markup
+      styling
+      logic
+server
+   area1
+      controller
+   area2
+      controller
+"""
+
+folder base
+
+   folder util
+      doer demo_math_operators - -
+
+      .
+   .
+
+   folder defs
+   .
+
+   folder dto
+.
+
+folder client
+'sees
+   base as :
+   client as ::
+
+'explainer
+hello from client folder doc comment
+"""
+   .
+.
+
+folder server
+'sees
+   base as :
+   server as ::
+.
+'explainer
+.
