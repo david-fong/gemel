@@ -1,33 +1,31 @@
 import { Dev } from "../common/dev";
 
 /**
- * AKA "commit"
- *
- * A minimal group of change parts that combined do not result in a broken state.
  */
-export interface Change {
-	when: Date;
-	author: Dev;
-	explainer: string;
-	parts: Change.Part[];
+export interface Version {
+	hasSnapshot: boolean;
+	changelog: {
+		migrate: string[];
+		feature: string[];
+		fix: string[];
+	};
+	updateDependantsScript: string; // TODO
 }
-export namespace Change {
-	export enum Kind {
-		Add,
-		Remove,
-		Change,
-	}
-	export interface Part {
-		kind: Kind;
-		body: any;
-		explainer: string;
-	}
+export namespace Version {
+	export type Id = number;
 }
 
-export interface Branch {
-	name: string;
-	base: Change;
-	changes: Change[];
+export interface History {
+	versions: Version[];
+}
+
+
+export interface UpdateDraft {
+	title: string; // must be unique on the server.
+	base: Version.Id;
+	when: Date;
+	explainer: string;
+	changes: UpdateDraft.Change[];
 
 	/**
 	 * Fancy magic. Ex. remove a change if a later change renders it useless.
@@ -36,7 +34,19 @@ export interface Branch {
 	 */
 	normalize(): void;
 }
+export namespace UpdateDraft {
 
-export interface History {
-	changes: Change[];
+	export interface Change {
+		kind: Change.Kind;
+		body: any;
+		explainer: string;
+		author: Dev;
+	}
+	export namespace Change {
+		export enum Kind {
+			Add,
+			Edit,
+			Remove,
+		}
+	}
 }

@@ -1,6 +1,9 @@
 
 /** */
 export interface Dev {
-	email: string;
+	email: Dev.Email;
 	username: string;
+}
+export namespace Dev {
+	export type Email = string;
 }

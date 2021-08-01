@@ -20,15 +20,17 @@ server
 folder base
 
    folder util
-      doer demo_math_operators - -
-
+      >> demo_math_operators arg"@Promise'<i32> answer"f32
+         : x' 1i32
+         for i' in 0 -- 4
+         done 0.2
       .
    .
 
-   folder defs
+   folder able
    .
 
-   folder dto
+   folder message
 .
 
 folder client
