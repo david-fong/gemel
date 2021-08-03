@@ -7,17 +7,17 @@ export interface Node {
 export namespace Node {
 	export enum TypeIds {
 		Shebang,
-		Namespace,
+		Folder,
 		Variable,
 		Function,
+		Trait,
 		Class,
 		ClassMemberVariable,
-		Interface,
 		Statement,
 		StringLiteral,
 		NumberLiteral,
 	}
 }
 export interface NodeClass {
-	deserialize(buf: string, index: number): { node: Node, parserAdvance: number };
+	deserialize(stream: ReadableStream): Node;
 }

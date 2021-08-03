@@ -1,31 +1,16 @@
 
-"""
-base
-client
-   area1
-      markup
-      styling
-      logic
-   area2
-      markup
-      styling
-      logic
-server
-   area1
-      controller
-   area2
-      controller
-"""
 
 folder base
 
-   folder util
-      >> demo_math_operators arg"@Promise'<i32> answer"f32
-         : x' 1i32
-         for i' in 0 -- 4
-         done 0.2
+   folder util {
+      fn demo_math_operators arg'@Later'<i32> f32"ans
+         ;hav x' 1
+         ;for i' in 0.,3
+            ;say "hi"
+         ;now ;it'id 1
+         ;ans 0.2
       .
-   .
+   }
 
    folder able
    .
@@ -34,7 +19,7 @@ folder base
 .
 
 folder client
-'sees
+:'sees
    base as :
    client as ::
 

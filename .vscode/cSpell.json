@@ -1,0 +1,93 @@
+{
+	"name": "root",
+	"description": "",
+	"language": "en-GB",
+	"enabledLanguageIds": [
+		"css",
+		"html",
+		"javascript",
+		"javascriptreact",
+		"json",
+		"jsonc",
+		"markdown",
+		"plaintext",
+		"scss",
+		"text",
+		"typescript",
+		"typescriptreact"
+	],
+	"flagWords": [
+		"hte", "teh"
+	],
+	"words": [
+		// Project-specific Terms:
+		"gemel",
+
+		// Programming terminology:
+		// (Functions and Variables)
+		"clientside",
+		"desc", "descs",
+		"dests",
+		"dict",
+		"elem", "elems",
+		"impls",
+		"mixins",
+		"multiline",
+		"nbsp",
+		"noopener",
+		"nsps",
+		"readonly",
+		"retval",
+		"reflow",
+		"refs",
+		"serverside",
+		"sourcemap",
+		"supercall",
+		"spec",
+		"typeof",
+		"toplevel",
+		"unshift",
+
+		// Tooling and Programming Languages:
+		"brotli",
+		"devtool",
+		"endregion", // for IDE folding
+		"entrypoint",
+		"javascript's",
+		"linting",
+		"markup",
+		"pnpm", "pnpx",
+		"readmes",
+		"todos",
+		"transpiled",
+		"twemoji",
+		"webpage",
+		"websockets",
+		"worktree", "worktrees",
+
+		"lowercase", "uppercase",
+
+		// English:
+		"broadcasted",
+		"constraining",
+		"jank",
+		"lifestages",
+		"lifecycle",
+		"millis",
+		"ness",
+		"passphrase",
+		"pipelining",
+		"placeholder",
+		"presets",
+		"programmatically",
+		"requester's",
+		"screenshots",
+		"setup", "setups",
+		"shortcut",
+		"spacebar",
+		"spellcheck", // <-- how ironic
+		"tradeoff",
+		"unblur",
+		"yeet"
+	]
+}

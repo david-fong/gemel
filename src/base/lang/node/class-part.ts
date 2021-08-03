@@ -3,11 +3,11 @@ import { Type } from "../type";
 import { Node_Exposure } from "./exposure";
 
 
-export class Node_ClassInstVar implements Node {
+export class Node_ClassPart implements Node {
 	public serialize(): string {
 		throw new Error("Method not implemented.");
 	}
-	public static deserialize(stream: ReadableStream): Node_ClassInstVar {
+	public static deserialize(stream: ReadableStream): Node_ClassPart {
 		return undefined!;
 	}
 }
