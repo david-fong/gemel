@@ -1,25 +1,28 @@
-
 # Avoid "Arbitrary Jargon"
 
 Guiding principle 2: Aim for something that someone entering an english-speaking high-school would understand.
 
-Guiding principle 1: Do _not_ touch names of standardized protocols and encoding schemes and such (ex. http, floating-point, 2's-compliment signed integers, utf8, ascii, png, etc.), and always follow terminology used in protocol/encoding specifications, unless the communities developing them expressly desire that the terminology be changed in the future. Go as far as preferring protocol/encoding names over more friendly terminology. Since this directly interferes with the goal of being more friendly to the general public, encourage beginning doc comments with a short and simply worded tag-line, and as a last resort, provide a per-project configuration mechanism to opt in to friendlier aliases such as "text" for utf8.
+Guiding principle 1: Do _not_ touch names of standardized protocols and encoding schemes and such (ex. http, floating-point, 2's-compliment signed integers, utf8, ascii, png, etc.), and always follow terminology used in protocol/encoding specifications, unless the communities developing them expressly desire that the terminology be changed in the future. Go as far as preferring protocol/encoding names over more friendly terminology. Since this directly interferes with the goal of being more friendly to the general public, encourage beginning doc comments with a short and simply-worded tag-line, and as a last resort, provide a per-project configuration mechanism to opt in to friendlier aliases such as "text" for utf8.
 
 Tradeoff: Do this even at the cost of being unfamiliar or annoying to the general programming or mathematics population.
+
+Some of this will not even show up as keywords when writing code. I'm also trying to think about the way that programmers _talk_ to each other about code, and to make that conversation more parse-able to people without experience in programming.
 
 ## Organization
 
 | Instead Of                    | Use             | Why |
 |-------------------------------|:---------------:|-----|
-| namespace / module / package  | folder          | The only word we use that I think carries its meaning is "namespace", which is not a commonly used word. When I first heard it, I thought it would carry much more meaning than just being a namespace. I don't think "folder" has that problem. |
-| comment                       | explainer       | "Comment" does not imply any degree of usefulness. In fact, "passing comment" is a common phrase meaning "a cheap personal remark", which is totally contrary to what code "comments" are supposed to do. "Explainer" can leverage the common wisdom that the obvious doesn't need to explained, which is a common misuse of software "comments". |
+| namespace / module / package  | folder          | I think the least ambiguous word we use is "namespace", but I don't think any person will figure out what we use it to mean until it's explained to them. I don't think "folder" has that problem. |
+| comment                       | explainer       | "Comment" does not imply any degree of usefulness. In fact, "passing comment" is a common phrase meaning "a cheap personal remark", which is totally contrary to what code "comments" are supposed to do. "Explainer" can leverage the common wisdom that the obvious doesn't need to explained, which is a common misuse of code "comments". |
 
 ## Functions
 
 | Instead Of                    | Use             | Why |
 |-------------------------------|:---------------:|-----|
-| function parameter / argument | need            | ? I'm not super decided on this- in fact, I think it might be a bad idea. |
-| return /return value          | answer          | To the average person, the most common meaning of the word "return" means "to give back something that was borrowed". "Answer" goes well with the terminology of "call" and "function", but it doesn't go well with "action", so I'll have to think about that. |
+| function                      | action          | (I'm iffy on this one.) |
+| function parameter / argument | need            | (I'm iffy on this one.) "Need" has a nice property of being both a verb and a noun, which decreases the amount of lingo: we no longer need to have the word "take" (as in "function has parameter which takes argument"): all of "parameter", "argument", and "take" are replaced by "need", which is kinda nice. If I decide to keep with the word "function", I'll probably go with "input" here. I anticipate it being confusing how "need" sounds when you want to specify an optional / "maybe"-type value, but I think it's still a liveable offence, especially since "need" will not be written in the code. |
+| return /return value          | answer          | To the average person, the most common meaning of the word "return" means "to give back something that was borrowed". "Answer" goes well with the terminology of "call" and "function", but it doesn't go well with "action", so I'll have to think about that. "Answer" also has the nice property of being a verb and a noun. |
+| call                          | do              | "do" works better with "action" |
 
 ## Common Statement Keywords
 
@@ -34,7 +37,6 @@ I will try to consistently choose verbs as statement keywords. I think it will b
 | Instead Of                    | Use             | Why |
 |-------------------------------|:---------------:|-----|
 | field / member variable       | part            | |
-| method / function             | action          | ? I'm not super decided on this |
 | interface / virtual functions | trait | (Piggybacking off of Rust here). "Trait" is an uncommon word, but it's meaning is suitable. The word "interface" is quite broad, and doesn't work as well languages that don't defaults methods to be virtual functions. Interestingly, I think friendliness to the general public is not very helpful here, since virtual functions are a pretty specific mechanism; having a less common word may help when learning it. |
 | extends                       | embeds          | Runner ups: integrates / implants / ingrains / attaches. I'll talk more about this later. I want to expose "extension" more as a special kind of "composition". |
 | abstract methods              | embedder trait  | |

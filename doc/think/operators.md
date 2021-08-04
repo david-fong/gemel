@@ -9,7 +9,7 @@ Let's use prefix notation! It will allow for fewer brackets and mostly rid ourse
 
 `+` adds two numbers. `+(` enables taking more than two operands.
 
-`/` gives the reciprocal of a number.
+`/` gives the reciprocal of a number... Or maybe... reciprocation could be a method on a float that takes a defaulter if the number is zero (and there could be a `recipOrDie` variant with no defaulter)? Wait... how would any of this work for integers?
 
 `*` multiplies two numbers. `*(` enables taking more than two operands.
 
