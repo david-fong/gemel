@@ -1,0 +1,19 @@
+[package]
+name = "gemel"
+version = "0.1.0"
+description = "A PoC collaborative, real-time, structural programming toolset (PL, IDE, VCS)."
+authors = ["David Fong"]
+license = "MIT"
+repository = ""
+edition = "2018"
+
+[workspace]
+members = ["src/base", "src/client/src-tauri", "src/server/*"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[build-dependencies]
+
+[dependencies]
+
+[features]

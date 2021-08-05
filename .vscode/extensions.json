@@ -1,0 +1,8 @@
+{
+   "recommendations": [
+      "rust-lang.rust"
+   ],
+   "unwantedRecommendations": [
+      "ms-vscode.vscode-typescript-tslint-plugin",
+   ],
+}

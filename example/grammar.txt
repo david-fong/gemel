@@ -1,1 +1,0 @@
-serialized_program := shebang? newline

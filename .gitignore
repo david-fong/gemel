@@ -3,10 +3,10 @@
 .DS_Store
 *.orig
 
+# cargo
+/target/
+WixTools
+
 # npm/pnpm
 /node_modules/
-!/src/node_modules/
 .pnpm-debug.log
-
-# build
-/dist/
