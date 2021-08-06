@@ -6,6 +6,8 @@
 # cargo
 /target/
 WixTools
+# for rustfmt:
+**/*.rs.bk
 
 # npm/pnpm
 /node_modules/

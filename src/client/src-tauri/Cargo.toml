@@ -1,24 +1,23 @@
 [package]
+publish = false
+workspace = "../../.."
 name = "gemel-client"
 version = "0.1.0"
-description = "A PoC collaborative, real-time, structural programming toolset (PL, IDE, VCS)."
-authors = ["David Fong"]
 license = "MIT"
-repository = ""
-default-run = "app"
 edition = "2018"
 build = "src/build.rs"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[dependencies]
+serde_json = "^1.0"
+serde = { version = "^1.0", features = ["derive"] }
+tauri = { version = "1.0.0-beta.5", features = ["api-all"] }
 
 [build-dependencies]
 tauri-build = { version = "1.0.0-beta.3" }
 
-[dependencies]
-serde_json = "1.0"
-serde = { version = "1.0", features = ["derive"] }
-tauri = { version = "1.0.0-beta.5", features = ["api-all"] }
-
 [features]
 default = [ "custom-protocol" ]
 custom-protocol = [ "tauri/custom-protocol" ]
+
+[profile.release]
+opt-level = "s"

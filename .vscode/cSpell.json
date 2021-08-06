@@ -58,6 +58,8 @@
 		"markup",
 		"pnpm", "pnpx",
 		"readmes",
+		"serde",
+		"tauri",
 		"todos",
 		"transpiled",
 		"twemoji",

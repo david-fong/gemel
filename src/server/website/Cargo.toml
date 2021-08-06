@@ -1,9 +1,8 @@
 [package]
-workspace = "../.."
-name = "gemel-lib"
+publish = false
+workspace = "../../.."
+name = "gemel-website"
 version = "0.1.0"
-description = "Shared code for gemel apps."
-categories = ["text-editors"]
 license = "MIT"
 edition = "2018"
 

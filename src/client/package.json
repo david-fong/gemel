@@ -1,16 +1,6 @@
 {
   "private": true,
-  "name": "gemel",
-  "version": "0.1.0",
-  "description": "A PoC collaborative, real-time, structural programming toolset (PL, IDE, VCS).",
-  "keywords": [
-    "programming language",
-    "IDE",
-    "VCS"
-  ],
-  "license": "MIT",
-  "author": "David Fong (https://github.com/david-fong)",
-  "repository": "github:david-fong/gemel",
+  "name": "gemel-client",
   "type": "module",
   "files": [],
   "sideEffects": [
