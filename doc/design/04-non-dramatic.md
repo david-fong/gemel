@@ -33,8 +33,6 @@ Here are some things that I will do that our existing technologies could also pr
         - make operators `un+` and `un*` that represent "un-adding" and "un-multiplying".
       - Either require explicit delimiters/terminator for operators with unknown arity, or only require it when the dev wants to use the operator with more than the minimum arity.
 
--
-
 ## Programming Language Choices
 
 ### Miscellaneous
