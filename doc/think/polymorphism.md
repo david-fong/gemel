@@ -8,3 +8,5 @@ So for anything that has virtual-tabled things, it's possible to specify code th
 
 
 What controls for extension? Should I provide anything more complicated than a boolean yes/no-this-class-can-be-extended?
+
+Note: when two superclasses implement/override a trait method, the

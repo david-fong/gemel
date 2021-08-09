@@ -2,14 +2,20 @@
 
 folder base
 
+   words {
+      ;
+   }
+
    folder util {
-      action demo_math_operators arg'@Later' i32 -> f32"ans
+      action demo_math_operators (r:u8 g:u8 b:u8): -> f32:ans
          hav sum' 0
-         for i' in 0.,3
-            set' sum + 1 - '
+         for i' in =0<3
+            set sum + 1 - '
          set self 'id 1
          ans sum
       .
+
+      action another_action (node"arr:html_div_el. )*
    }
 
    folder able
@@ -19,9 +25,6 @@ folder base
 .
 
 folder client
-:'sees
-   base as :
-   client as ::
 
 'explainer
 hello from client folder doc comment

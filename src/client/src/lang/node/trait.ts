@@ -13,5 +13,10 @@ export namespace Node_Trait {
 	export interface Model {
 		id: number;
 		name: string;
+		traitActions: {
+			id: number;
+			name: string;
+			action: any; // TODO
+		}[];
 	}
 }

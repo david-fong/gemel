@@ -19,14 +19,15 @@ export namespace Node_Class {
 		name: string;
 
 		typeInputs: Type[];
-		/** must be false to allow requiring embedder traits or unimplemented traits */
-		hasIncompleteTraits: boolean;
-
-		allowedEmbedders: undefined | {
+		embedder?: {
+			embeds: Node_Class.Model["id"][];
+			hasTraits: Node_Trait.Model["id"][];
 		};
+		hasIncompleteTraits(): boolean;
+
 		embedded: Type[];
-		parts: Node_ClassPart.Model;
-		actions: Node_ClassAction.Model;
+		parts: Node_ClassPart.Model[];
+		actions: Node_ClassAction.Model[];
 		/**
 		 * To create abstract methods, create a trait and put it here unimplemented.
 		 *
@@ -37,6 +38,6 @@ export namespace Node_Class {
 
 	export interface TraitImplModel {
 		traitId: Node_Trait.Model["id"];
-		impl: undefined | Record<>;
+		impl: undefined | Record<>; // Note: It may help me to disallow partial implementations- just to keep things simple. Not sure if such a rule will actually be helpful.
 	}
 }

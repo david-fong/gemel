@@ -5,7 +5,7 @@ mod casing {
 		None, Dash, Underscore,
 	}
 	pub enum Caps {
-		None, First, All,
+		None, Camel, Pascal, All,
 	}
 }
 pub struct Casing {
@@ -21,16 +21,15 @@ mod display_rules {
 		pub folder: super::Casing;
 		pub var: super::Casing;
 		pub enum: super::Casing;
+		pub enum_member: super::Casing;
 		pub type: super::Casing;
 	}
 }
-pub struct DisplayRules {
+pub struct Settings {
 	pub indent_width: u8;
 	//. Setting this to zero turns off soft-wrapping.
 	pub page_width: u8;
-	pub casing: {
-
-	};
+	pub casing: display_rules::Casing;
 	pub trailing_comma: display_rules::TrailingComma;
 	pub line_break: {
 		pub before_opening_block: bool;

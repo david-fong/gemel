@@ -2,17 +2,13 @@
 
 This is a challenge to myself to prototype my speculative fiction-y thoughts- to realize proof-of-concept tooling for a programming experience with the following qualities centred on improving human interfaces:
 
-- It is designed to remove friction from the collaborative programming experience by tightening integration of various developer tooling, and supporting collaborative, real-time editing.
-  - See [the dedicated readme](doc/design/collaboration.md).
+- It is designed to remove friction from the collaborative programming experience by tightening integration of various developer tooling, and supporting collaborative, real-time editing. See [the dedicated readme](doc/design/collaboration.md).
 
-- It builds the human-to-tool and tool-to-tool interfaces closer to the AST layer of abstraction rather than to text files.
-  - See [the dedicated readme](doc/design/ast.md).
+- It builds the human-to-tool and tool-to-tool interfaces closer to the AST layer of abstraction rather than to text files. See [the dedicated readme](doc/design/ast.md).
 
-- The language is designed to be more approachable to the general public by avoiding what I think is arbitrary programmer jargon.
-  - See [the dedicated readme](doc/design/terminology.md).
+- The language is designed to be more approachable to the general public by avoiding what I think is arbitrary programmer jargon. See [the dedicated readme](doc/design/terminology.md).
 
-- SIt has some other miscellaneous (and less dramatic) features / design goals.
-  - See [the dedicated readme](doc/design/non-dramatic.md).
+- It has some other miscellaneous (and less dramatic) features / design goals. See [the dedicated readme](doc/design/non-dramatic.md).
 
 I will try to build a collaborative, real-time [structure editor](https://wikipedia.org/wiki/Structure_editor), strongly-typed, general-purpose OOP (maybe DSL-embeddable) language, and grammar-aware version-control system with some more builtin collaboration features. This (perhaps-obscene) amalgamation of commonly separated concerns is the inspiration for [the name of the project](https://wikipedia.org/wiki/Inosculation). I'm going to work on this until at least the year 2024.
 
