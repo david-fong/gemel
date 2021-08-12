@@ -1,6 +1,8 @@
 {
    "recommendations": [
-      "rust-lang.rust"
+      "rust-lang.rust",
+      "bierner.lit-html",
+      "streetsidesoftware.code-spell-checker"
    ],
    "unwantedRecommendations": [
       "ms-vscode.vscode-typescript-tslint-plugin",

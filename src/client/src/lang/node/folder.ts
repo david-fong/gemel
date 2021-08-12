@@ -16,7 +16,7 @@ export namespace Node_Folder {
 		childrenRules: Model.ChildrenRules | undefined;
 	}
 	export namespace Model {
-		export interface ChildrenRules {
+		export interface ChildrenRules extends ChildrenRules.Kind {
 			controlDependencies: boolean; // if true, also prevents circular dependencies.
 
 		}

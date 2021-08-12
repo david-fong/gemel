@@ -36,6 +36,8 @@
 *.xml             text
 *.xhtml           text diff=html
 
+*.rs              text diff=rust
+
 # Docker
 Dockerfile        text
 

@@ -1,6 +1,6 @@
 # Build Interfaces on the AST Layer
 
-Tradeoff: Do not care about whether the serialized of the code is readable. Actively discourage devs from directly interacting with the serialized form.
+Tradeoff: Do not care about whether the serialized of the code is readable. Actively discourage devs from directly interacting with the serialized form. This may make it difficult to share snippets of code...
 
 This allow for solving the following problems:
 
