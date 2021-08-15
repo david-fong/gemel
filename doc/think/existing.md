@@ -22,6 +22,15 @@
 - [Language Server Protocol](https://microsoft.github.io/language-server-protocol/)
 - [Tree-Sitter](https://tree-sitter.github.io/tree-sitter/)
 
+## Collaborative Software Development
+
+- [Radicle](https://radicle.xyz/)
+
 ## Fields of Study
 
-- https://en.wikibooks.org/wiki/Understanding_Darcs/Patch_theory
+- Collaborative Real-Time Editors
+  - [wikipedia](https://en.wikipedia.org/wiki/Collaborative_real-time_editor)
+  - [Patch Theory - wikibooks](https://en.wikibooks.org/wiki/Understanding_Darcs/Patch_theory)
+- Version Control
+  - [wikipedia](https://en.wikipedia.org/wiki/Version_control)
+  - [distributed VCS](https://en.wikipedia.org/wiki/Distributed_version_control)

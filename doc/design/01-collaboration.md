@@ -9,9 +9,10 @@ I aim to solve the following problems:
 
 ## VCS
 
-- Linear history only.
+- Linear mainline only?
 - Centralized repo?
   - What common workflows use multiple remotes?
+    - GitHub forking :O. Perhaps forking can be replaced by encouraging fine-grained modularity and dependency of libraries.
 - Design a mechanism for migrating serialized data between schemas.
 - Provide ability to summarize and view summaries of api changes.
 - Encourage extremely small commits and pushing often.

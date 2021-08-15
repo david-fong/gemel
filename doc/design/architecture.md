@@ -2,18 +2,22 @@
 
 ## Motivating Goals
 
-- I want a web frontend to communicate with the host system in order to compile and run code.
-  - I want a lightweight stack.
+- I want a web-browser UI to communicate with the host system in order to compile and run code.
+  - I want resource-usage at runtime to be low.
   - I want to avoid any need for manually mirroring models / logic, and I want to have a reasonably fast tool for automatically generating necessarily duplicate code.
 
-- I want to use protocols designed for efficiently passing messages within a group of machines.
+- I'm on the fence about whether to support interacting with code outside of the native app. Rejecting that capability would have huge consequences: no StackOverflow code, no inline code in blog posts and tutorial writings, etc. The thing I don't like about posting code snippets is that there isn't much incentive to keep them up to date as technology evolves, or even to notify readers that technology _has_ evolved. I guess that's not limited to just code snippets though...
+  - StackOverflow and Medium could possibly be substituted by just incentivizing project maintainers (including those of gemel itself) to provide helpful examples and documentation, and building in to the platform channels for asking for help.
+    - This certainly fits with the theme of gemel.
+
+- I want to use protocols designed for efficiently passing messages between machines in a group.
   - I will look for protocols that have implementations in many popular languages. Rationale: If I use a protocol that only has good frontend support, I'm closing off the opportunity of non-web frontends, and if I choose something that doesn't have a in-web-compatible implementation, then I'm closing off functionality from being available for a web-only experience, which is a nice-to-have for introducing people to the project.
   - I'm looking for a P2P transport.
   - I'm looking for a binary encoding, but if I can't find one, I'll go with JSON.
     - A small serialization format may not have much benefit compared to P2P comms, so it may be worth just using JSON for the sake of simplicity...
-  - I will look for a dataflow that balances minimizing duplication of dependencies, keeping the code simple, and not compromising performance.
+  - I will look for a dataflow that avoids duplication of dependencies and keeps the source-code simple.
 
-- For the web frontend, I'm looking for a DOM library that is light, simple to use, and doesn't abstract too far away from standard HTML/CSS/JS. A project with a strong community backing is good- I want to use something that won't be well supported in the future.
+- For the web frontend, I'm looking for a DOM library that is light, simple to use, performant, and doesn't abstract too far away from standard HTML/CSS/JS. A project with a strong community backing is a big nice-to-have- I want to use something that will be well supported in the future, but I will look for something that I could live with even if further development for it was dropped tomorrow.
 
 ## Decisions
 
@@ -31,5 +35,9 @@
   - lighterhtml
     - See [this handy comparison of lighterhtml and lit-html](https://webreflection.medium.com/lit-html-vs-hyperhtml-vs-lighterhtml-c084abfe1285).tml or lit-html
 
-- Should I use a frontend framework?
-  - [VS Code doesn't use a UI framework](https://www.youtube.com/watch?v=gnKzJRr-rd0&ab_channel=VisualStudioCode)!- to maximize performance by being as close to the DOM as possible. As someone who started doing things with no UI framework or library and actually enjoyed it, this is super encouraging. But I have a feeling that I won't be able to scale that for a more complicated project like this one; my main web project (capswalk) focuses a lot on optimizing one part of the UI and I've mostly ignored the other parts of the UI (moral: hand optimization is not easy to write). And it may be helpful to keep in mind that VS Code started around 2015, React around 2013, and solid.js around 2018 and only recently released v1.0. Solid.js promises abstraction with high performance, which is really what I'm looking for (simple code is a goal), and I believe it can also be a sustainable choice in the long term. Of course, I'll need to try it out to get a better feel for whether that's truly the case.
+- Is it a reasonable design choice for Gemel to use a web UI framework?
+  - Motivation: [VS Code doesn't use a UI framework](https://www.youtube.com/watch?v=gnKzJRr-rd0&ab_channel=VisualStudioCode)!- to maximize performance by being as close to the DOM as possible. Personal note: As someone who cares about runtime elegance and who started doing things with no UI framework or library and actually enjoyed it, this sounds very tempting.
+  - But:
+    - I have a feeling that I won't be able to scale that for a more complicated project like this one. Hand optimization is hard.
+    - VS Code started around 2015, React around 2013, and Solid around 2018 and only recently released v1.0. Solid promises abstraction with high performance, which is exactly what I'm looking for. Perhaps if Solid existed when VS Code began, they may have considered it as a suitable tool.
+    - VS Code is an IDE for interfacing with _text files_. Gemel is not. It makes way more sense for gemel to take advantage of the hierarchical capabilities of the DOM. Gemel doesn't need to deal with many of the performance and complexity challenges that arise from having to maintain a visage of a text file.

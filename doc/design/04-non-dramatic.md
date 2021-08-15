@@ -2,6 +2,14 @@
 
 Here are some things that I will do that our existing technologies could also probably easily do (not all of them are expressly "improvements". some are just regular old choices):
 
+## Responsibilities
+
+These things should be made easy by tooling:
+
+- Generating some kind of changelog.
+  - I'm thinking to go a step further and give package authors to notify dependents ahead of time about what upcoming changes there are.
+- Checking for software license compatibility when depending on a package.
+
 ## Hide Serialization and Improve IDE Interface
 
 - Remove the choice of how to arrange the hierarchy for applications with multiple "dimensions" (Ex. web project with front and back ends and areas and multiple frontend concerns (HTML,CSS,JS)).

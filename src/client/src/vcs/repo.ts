@@ -1,5 +1,5 @@
 import { Dev } from "../common/dev";
-import { History } from "./history";
+import { UpdateHistory } from "./history";
 
 export interface Repo {
 	devs: {
@@ -13,5 +13,5 @@ export interface Repo {
 		 */
 		core: Dev.Email[];
 	};
-	history: History;
+	history: UpdateHistory;
 }

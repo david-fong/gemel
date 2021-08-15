@@ -1,5 +1,7 @@
 # Avoid "Arbitrary Jargon"
 
+Note: This was originally treated as a key design goal, but it has been replaced with the goal of making keywords swappable almost like a color theme.
+
 Guiding principle 2: Aim for something that someone entering an english-speaking high-school would understand.
 
 Guiding principle 1: Do _not_ touch names of standardized protocols and encoding schemes and such (ex. http, floating-point, 2's-compliment signed integers, utf8, ascii, png, etc.), and always follow terminology used in protocol/encoding specifications, unless the communities developing them expressly desire that the terminology be changed in the future. Go as far as preferring protocol/encoding names over more friendly terminology. Since this directly interferes with the goal of being more friendly to the general public, encourage beginning doc comments with a short and simply-worded tag-line, and as a last resort, provide a per-project configuration mechanism to opt in to friendlier aliases such as "text" for utf8.
@@ -19,7 +21,7 @@ Some of this will not even show up as keywords when writing code. I'm also tryin
 
 | Instead Of                    | Use             | Why |
 |-------------------------------|:---------------:|-----|
-| function                      | action          | (I'm iffy on this one.) |
+| function                      | action / calculation | "calculation" for pure functions. I don't really want to use "function" because in math, a function isn't something to be "called" or "performed". |
 | function parameter / argument | need            | (I'm iffy on this one.) "Need" has a nice property of being both a verb and a noun, which decreases the amount of lingo: we no longer need to have the word "take" (as in "function has parameter which takes argument"): all of "parameter", "argument", and "take" are replaced by "need", which is kinda nice. If I decide to keep with the word "function", I'll probably go with "input" here. I anticipate it being confusing how "need" sounds when you want to specify an optional / "maybe"-type value, but I think it's still a liveable offence, especially since "need" will not be written in the code. |
 | return /return value          | answer          | To the average person, the most common meaning of the word "return" means "to give back something that was borrowed". "Answer" goes well with the terminology of "call" and "function", but it doesn't go well with "action", so I'll have to think about that. "Answer" also has the nice property of being a verb and a noun. |
 | call                          | do              | "do" works better with "action" |

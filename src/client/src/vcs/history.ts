@@ -2,28 +2,42 @@ import { Dev } from "../common/dev";
 
 /**
  */
-export interface Version {
-	hasSnapshot: boolean;
-	changelog: {
-		migrate: string[];
-		feature: string[];
-		fix: string[];
-	};
-	updateDependantsScript: string; // TODO
+export interface Update {
+	title: string;
+	explainer: string;
+	isRelease: boolean;
+	type: Update.Type;
+	peopleToTell: Update.PeopleToTell;
+	script: {
+		code?: string;
+		data?: string;
+	}; // TODO
 }
-export namespace Version {
+export namespace Update {
 	export type Id = number;
+	export enum Type {
+		Addition, // opt-in optimizations do not go here.
+		Correction_Minor,
+		Correction_Major,
+		ExplainerEdit,
+		Rephrase, // ie. refactor
+		Optimization,
+	};
+	export enum PeopleToTell {
+		Contributors,
+		CodeUsers,
+		AppUsers,
+	};
 }
 
-export interface History {
-	versions: Version[];
+export interface UpdateHistory {
+	updates: Update[];
 }
 
 
 export interface UpdateDraft {
 	title: string; // must be unique on the server.
-	base: Version.Id;
-	when: Date;
+	base: Update.Id;
 	explainer: string;
 	changes: UpdateDraft.Change[];
 
