@@ -7,4 +7,3 @@ Almost every node in the AST will have an ID. There will be different ID "scopes
 - Folders can have their own class of IDs. To keep the serialization format simple, it may be best to go with fixed-size, which would require conceptually flattening paths, which could be a good thing since it allows for moving folders around without changing the serialized id.
 
 - Within a (flattened) folder, create scopes for each of
-

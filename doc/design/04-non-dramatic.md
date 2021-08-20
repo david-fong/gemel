@@ -2,6 +2,8 @@
 
 Here are some things that I will do that our existing technologies could also probably easily do (not all of them are expressly "improvements". some are just regular old choices):
 
+- Don't ever prevent "keywords" from being used as identifiers.
+
 ## Responsibilities
 
 These things should be made easy by tooling:
@@ -18,7 +20,7 @@ These things should be made easy by tooling:
 
 ## Reading Code
 
-- Make named return values. It's annoying to have to read the doc comment just to figure out what a return value of a method means. I believe that good names are often sufficiently good documentation. The name doesn't even have to have any ability to shorten caller code (although there's possibility that it could help to do that). This might be less helpful for generic collection types, but it will probably be much better than nothing.
+- Enable named return values. It's annoying to have to read the doc comment just to figure out what a return value of a method means. I believe that good names are often sufficiently good documentation. The name doesn't even have to have any ability to shorten caller code (although there's possibility that it could help to do that). This might be less helpful for generic collection types, but it will probably be much better than nothing.
 
 - Make it easy to filter out information.
   - Show only declarations (hide definitions).
@@ -29,6 +31,10 @@ These things should be made easy by tooling:
 - Make it easy to trace or filter information like where exceptions might come from, where functions get called, etc.
 
 - Make it easy to see which method calls perform mutations. Perhaps by coloring or emboldening or something like that.
+
+```
+this'
+```
 
 ## Editing Code
 

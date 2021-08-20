@@ -5,7 +5,6 @@ import { Dev } from "../common/dev";
 export interface Update {
 	title: string;
 	explainer: string;
-	isRelease: boolean;
 	type: Update.Type;
 	peopleToTell: Update.PeopleToTell;
 	script: {
@@ -18,15 +17,15 @@ export namespace Update {
 	export enum Type {
 		Addition, // opt-in optimizations do not go here.
 		Correction_Minor,
-		Correction_Major,
+		Correction_Urgent,
 		ExplainerEdit,
 		Rephrase, // ie. refactor
 		Optimization,
 	};
-	export enum PeopleToTell {
-		Contributors,
-		CodeUsers,
-		AppUsers,
+	export interface PeopleToTell {
+		contributors: boolean;
+		codeUsers: boolean;
+		appUsers: boolean;
 	};
 }
 

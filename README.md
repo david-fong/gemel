@@ -4,9 +4,9 @@
 
 This is a challenge to myself to prototype my speculative fiction-y thoughts- to realize proof-of-concept tooling for a programming experience with the following qualities centred on improving human interfaces:
 
-- It is designed to remove friction from the collaborative programming experience by tightening integration of various developer tooling, and supporting collaborative, real-time editing. See [the dedicated readme](doc/design/01-collaboration.md).
+- It builds the human-to-tool and tool-to-tool interfaces closer to the AST layer of abstraction rather than to text files, but tries to keep a somewhat familiar visual aesthetic. See [the dedicated readme](doc/design/01-ast.md).
 
-- It builds the human-to-tool and tool-to-tool interfaces closer to the AST layer of abstraction rather than to text files, but tries to keep a somewhat familiar visual aesthetic. See [the dedicated readme](doc/design/02-ast.md).
+- It is designed to remove friction from the collaborative programming experience by tightening integration of various developer tooling, and supporting collaborative, real-time editing. See [the dedicated readme](doc/design/02-collaboration.md).
 
 - It treats terminology (words!) as a fundamental building-block of human-readable code. See [the dedicated readme](doc/design/03-words.md).
 

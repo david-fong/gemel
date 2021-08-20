@@ -2,6 +2,6 @@
 /**
  *
  */
-interface Program {
+interface Repo {
 	validate();
 }
