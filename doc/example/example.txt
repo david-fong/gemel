@@ -1,41 +1,40 @@
 
 
-folder base
+@ base {
 
-   words {
-      ;
+   " contributors {
+      David Fong :
    }
 
-   folder util {
-      action demo_math_operators (r:u8 g:u8 b:u8): -> f32:ans
-         hav sum' 0
-         for i' in =0<3
-            set sum + 1 - '
-         set self 'id 1
-         ans sum
-      .
+   @ util {
+      = demo_math_operators args"(r"u8 g"u8 b"u8 an_editable_arg":u8) f32 {
+         :: sum":u8 0
+         range(0 3)'loop((i) _ {
+            :sum + : i
+         })
+         -> sum
+      }
 
-      action another_action (node"arr:html_div_el. )*
+      ` another_action "(node"##[html_div_el]) _ {
+         have arr1":#3[@:u8] (1 2 3)
+         have arr2"#3[@u8] ()
+      }
    }
 
-   folder able
-   .
+   @ able {}
 
-   folder message
-.
+   @ message {}
+}
 
-folder client
+@ client
+* hello from client zone doc comment
+  here is another line!
+{
+}
 
-'explainer
-hello from client folder doc comment
-"""
-   .
-.
-
-folder server
+@ server
 'sees
+{
    base as :
    server as ::
-.
-'explainer
-.
+}

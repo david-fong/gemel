@@ -9,10 +9,14 @@ English is a Subject-Verb-Object language read from top-to-bottom and left-to-ri
 
 In OOP, there isn't really a subject (I don't think?). The current convention is weird if you think about it: functions are a verb with multiple objects where the verb goes first, and methods are the same except one of the objects is special and goes before the verb.
 
+Another big consideration is autocomplete and viewing a deep chain of function composition.
+
 
 
 ## Adjectives
 
 https://en.wikipedia.org/wiki/Postpositive_adjective
 
-##
+## Collections
+
+Is it more common across spoken languages to say "three cats" or "cats three"?
