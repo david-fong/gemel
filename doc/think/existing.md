@@ -1,4 +1,8 @@
 
+## Encompassing
+
+- https://maggieappleton.com/learnable-programming
+
 ## Structure Editors
 
 - Lisp + Emacs?
