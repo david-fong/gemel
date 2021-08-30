@@ -1,38 +1,47 @@
-# Motivating Goals
+# Architecture
 
-## Hearken to VS Code
+## Requirements
 
-Why not focus on a terminal TUI or use a UI framework like Qt?
+- Make a cross platform desktop application.
 
-- All three have historical things-that-are-not-so-nice / eccentricities that just need to be lived with.
-- Terminal TUIs can't do panels with smooth scroll or anything that needs alignment outside of a full-window character-grid.
-- The web is resource hungry, but it's very capable, and many people are familiar with developing for it to some degree (probably many more people than for TUIs or other UI frameworks).
-- I only have experience with web development. I have some experience navigating its many quirks. Not so for any TUI development or Qt.
+- Hearken to the look-and-feel and quality of VS Code.
 
-## Implement Compiling and Running Code
+- Enable writing, compiling and running code without an internet connection.
 
-- Try to keep resource-usage at runtime low.
-- Avoid any need for manually mirroring models / logic, and I want to have a reasonably fast tool for automatically generating necessarily duplicate code.
+- Design to keep resource usage (disk, memory, network) on the user's machine low.
+
+- Favour a simple architecture and easy code reuse.
+
+## Choices to Make
+
+### Application Platform and Framework
+
+- Terminal TUI: Nope. Can't do panels with smooth scrolling or any text that isn't aligned to the character grid.
+
+- A browser-based solution (ex. electron, NW.js, or tauri).
+  - For a web frontend, I'd be looking for a DOM library that is light, simple to use, performant, and doesn't abstract too far away from standard HTML/CSS/JS. A project with a strong community backing is a big nice-to-have- I want to use something that will be well supported in the future, but I will look for something that I could live with even if further development for it was dropped tomorrow.
+
+- React Native
+
+- Dart
+
+See the [./opt-app/](./opt-app/) folder for the dedicated evaluation documents.
+
+### Supporting Coding in Browser
 
 - I'm on the fence about whether to support interacting with code outside of the native app. Rejecting that capability would have huge consequences: no StackOverflow code, no inline code in blog posts and tutorial writings, etc. The thing I don't like about posting code snippets is that there isn't much incentive to keep them up to date as technology evolves, or even to notify readers that technology _has_ evolved. I guess that's not limited to just code snippets though...
   - StackOverflow and Medium could possibly be substituted by just incentivizing project maintainers (including those of gemel itself) to provide helpful examples and documentation, and building in to the platform channels for asking for help.
     - This certainly fits with the theme of gemel, but this feels like too much.
 
-- I want to use protocols designed for efficiently passing messages between machines in a group.
-  - I will look for protocols that have implementations in many popular languages. Rationale: If I use a protocol that only has good frontend support, I'm closing off the opportunity of non-web frontends, and if I choose something that doesn't have a in-web-compatible implementation, then I'm closing off functionality from being available for a web-only experience, which is a nice-to-have for introducing people to the project.
-  - I'm looking for a P2P transport.
-  - I'm looking for a binary encoding, but if I can't find one, I'll go with JSON.
-    - A small serialization format may not have much benefit compared to P2P comms, so it may be worth just using JSON for the sake of simplicity...
-  - I will look for a dataflow that avoids duplication of dependencies and keeps the source-code simple.
+### Communications
 
-- For the web frontend, I'm looking for a DOM library that is light, simple to use, performant, and doesn't abstract too far away from standard HTML/CSS/JS. A project with a strong community backing is a big nice-to-have- I want to use something that will be well supported in the future, but I will look for something that I could live with even if further development for it was dropped tomorrow.
+WebSockets and JSON are pretty widely implemented.
 
-## Some Decisions
+P2P protocol implementations are not really mature especially for relatively newer languages like Rust and Dart. [WebRTC](https://webrtcforthecurious.com/docs/01-what-why-and-how/) is well supported in major browsers.
 
-- For P2P comms, I'll use the webview's WebRTC (maybe through libp2p, but right now the rust implementation doesn't come with support for the webRTC transport (though there is [a pure rust implementation](https://webrtc.rs/))).
-  - More about WebRTC:
-    - https://webrtcforthecurious.com/docs/01-what-why-and-how/
+- Is P2P communications really necessary? It would be helpful if many people are watching somebody code from different devices (like a massive code streaming session?), but how often does this really happen? And what about implementing permissions such that only some people can send suggestions? I might need a "server" in the group to act as a source of truth. Perhaps it would be best if I just started with WebSockets and look at the possibility of P2P later.
 
-- For the encoding of data in transport, I'll look into using [CBOR](https://cbor.io/spec.html).
-  - https://github.com/hildjj/cbor-wasm
-  - CBOR still encodes keys as strings, so some kind of compression (brotli?) will still be useful when transporting large messages with repeated string values... At this point, maybe it's just better to stick to JSON?
+Using [CBOR](https://cbor.io/spec.html) may be less friendly (compared to JSON) if people want to build their own clients to the communications API.
+
+- https://github.com/hildjj/cbor-wasm
+- CBOR still encodes keys as strings, so some kind of compression (brotli?) will still be useful when transporting large messages with repeated string values... At this point, maybe it's just better to stick to JSON?
