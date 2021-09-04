@@ -1,18 +1,28 @@
 # Keywords and Symbols
 
+## Early Restrictions
+
+- Don't use ` = ` for assignment / modification.
+  - It's a conceptual hurdle to beginners and I think it's both worthwhile and no too costly (in terms of burden for existing programmers) to fix.
+- Don't use ` & ` for references. ` * ` is somewhat okay, but push for ` @ `.
+
+## Cautions to Self
+
+- If possible, I would like dev-chosen-names to be able to have colons in them so they can be used in names for variables holding a map (disallowing them as the first and last character are okay).
+
 ## For Humans
 
 - Zone Declaration: ` @ ` or ` / `
 - Zone Auto-Disambiguation Separator: ` / `
-- Dictionary: ` " ` or ` "" `
+- Explainer: ` * `
+- Dictionary: ` " ` or ` "" ` or ` ": `
   - Noun Specifier: ` : ` (same as in variable editing)
   - Verb specifier: `` ` `` (same as in action declaration)
   - Adjective / adverb / variant name: ` ~ ` (? not decided on this)
-- Explainer: ` * `
 
 ## Variables and Functions
 
-- Variable Declaration: ` :: `
+- Variable Declaration: ` ' ` or ` @' ` or ` :: `
 - Variable Edit: ` : `
 - Calculation: ` $ ` or ` = `
 - Action: `` ` ``
@@ -31,27 +41,49 @@ or perhaps if the placements are very well defined (while still being configurab
 
 ## Class Definition
 
-- Class -> Embedded Objects: ` " ` or ` '' `
+- Class -> ` #' ` or ` #" ` or ` #'" ` ? object is like a specialized dictionary.
+- Class -> Embedded Objects: ` '# ` or ` " ` or ` '' `
 - Class -> Parts: ` ' `
-- Class -> Traits: ` ~ `
-- Class -> Static Parts: ` 1' `
+- Class -> Traits: ` ~ ` or
+- Class -> Static Parts: ` # ` or ` 1' `
 
 ## Value Reading
 
 - Part Access: ` ' ` (same as in class def)
-- Collection Element Access: ` @ `
+- Collection Element Random-Access: ` @ `
 
-## Collection Sugar
+## Collection / Container Sugar
 
-- Fixed-Size Ordered Collection: ` #N:T ` where N is an integer literal or a compile-time constant and T is the element type.
-- Variable-Size Ordered Collection: ` ##:T ` where T is the element type.
-- Unordered Variable-Size Collection: ` #'T ` where T is the element type.
-- Map: ` #'K:V ` where K is the key type and V is the value type.
-- Others: ` #;stack:T `, ` #;queue:T `.
+Note to self: keep in mind whatever symbols will be used for mutability, nullability, ownership/heaped etc. and make sure there are no conflicts / ambiguities.
 
-## Type Modifiers
+The fact that I'm coming up with such terse notations for these makes me jealous for the sake of primitive types 😅. Maybe I should try to come up with terse notations for those too.
 
-- Nullable: ` 00/ ` (as a prefix)
+### Random-Access-Capable
+
+- Fixed-Size Ordered Collection: ` #N@T ` where N is an integer literal or a compile-time constant and T is the element type.
+- Variable-Size Ordered Collection: ` ##@T ` where T is the element type. hehe this looks like a tie-fighter.
+- Unordered Variable-Size Collection: ` #'@T ` where T is the element type.
+- Map: ` #'@K:V ` where K is the key type and V is the value type.
+- Others: ` #;stack:T `, ` #;queue:T `. Note: Implementation may choose to expose itself as non-random-access-capable.
+
+### Non-Random-Access-Capable
+
+- Iterable: ` #> ` or ` #, `
+  - I'm always wary of how hard to see/distinguish a comma is. The angle bracket only makes sense to people who speak LTR languages, but I think bidirectional human-readable-code is out of my problem-solving depth.
+- Future/Promise: ` #..T `
+- Asynchronous Iterable (Stream): ` #>..T ` or ` #,.. `
+
+## Type "Modifiers"
+
+- Nullable: ` #?T ` or ` 00/T ` where T is the element type.
+  - I like how the double-zero option reads, but the question-mark notation is much more widespread, and it opens up the nice opportunity to do the same-content-and-container-symbols thing: `T?'field`
+- Reference: ` #@T ` where T is the value type.
+  - I think the at-sign option is super friendly (intuitive) to most people. I'm just worried about it conceptually clashing with the same usage for containers capable of random access... I think it's okay- it's like- here, you don't need to provide any further addressing information, because it is the address.
+
+- Mutable: ` : ` ? (as a prefix (only allowed before the typename of the value of a variable, or the the typename of the value referenced by a reference)).
+- Compile-time Constant: ` . `.
+
+Should I make these so easily composable? Does it make sense to be able to "nest" referencing or nullability? mutability definitely should be a special case (only allowed in specific ways).
 
 ## Configurability
 
