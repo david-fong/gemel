@@ -34,7 +34,8 @@
   - https://api.flutter.dev/flutter/widgets/RichText-class.html
   - https://dart.dev/tools/pub/package-layout
 
-- Verdict: Undecided.
+- Verdict: Interested in using. Will try it out.
+  - I'm feeling really overwhelmed by the number of state management methods, but coming from the web world where there are a hundred ways to do every single thing, I guess I can't complain much. I'm wondering if I can start by just having a big global tree containing state, and streams to notify the widget tree of granular state changes (using [StreamBuilder](https://api.flutter.dev/flutter/widgets/StreamBuilder-class.html)).
 
 - for linking to LLVM:
   - https://flutter.dev/docs/development/platform-integration/c-interop

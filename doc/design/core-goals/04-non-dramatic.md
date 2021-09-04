@@ -11,6 +11,7 @@ These things should be made easy by tooling:
 - Generating some kind of changelog.
   - I'm thinking to go a step further and give package authors to notify dependents ahead of time about what upcoming changes there are.
 - Checking for software license compatibility when depending on a package.
+  - I'm surprised that this isn't built into some package management systems like NPM; instead, you have to install a package to get a tool. I've seen Visual Studio prompt to accept a license when install a nuget package, but it was still a manual operation.
 
 ## Hide Serialization and Improve IDE Interface
 
@@ -29,12 +30,9 @@ These things should be made easy by tooling:
     - Show private declarations used by the declaration under the currently selected declaration.
 
 - Make it easy to trace or filter information like where exceptions might come from, where functions get called, etc.
+  - Summarize what exceptions can be thrown under a function, and on focusing on one, show where it might be thrown. When drilling into the thrower, highlight that same exception in its summary list. Provide a similar function for catch blocks.
 
 - Make it easy to see which method calls perform mutations. Perhaps by coloring or emboldening or something like that.
-
-```
-this'
-```
 
 ## Editing Code
 
@@ -55,6 +53,8 @@ this'
 
 ### Inheritance
 
-Use delegation like Kotlin and automatically prompt for and display disambiguation information when inherited members have similar signatures.
+Do something similar to delegation in Kotlin and automatically prompt for and display disambiguation information when inherited members have similar signatures.
+
+Explore possibilities for providing more ergonomic assignment between similarly shaped objects.
 
 ## Provide Grammar and Analysis Tooling for Declaration Dependency Control

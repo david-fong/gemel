@@ -10,6 +10,8 @@
 
 - If possible, I would like dev-chosen-names to be able to have colons in them so they can be used in names for variables holding a map (disallowing them as the first and last character are okay).
 
+===
+
 ## For Humans
 
 - Zone Declaration: ` @ ` or ` / `
@@ -22,7 +24,7 @@
 
 ## Variables and Functions
 
-- Variable Declaration: ` ' ` or ` @' ` or ` :: `
+- Variable Declaration: ` ' ` or ` @' ` or ` :: ` (all requiring a trailing space)
 - Variable Edit: ` : `
 - Calculation: ` $ ` or ` = `
 - Action: `` ` ``
