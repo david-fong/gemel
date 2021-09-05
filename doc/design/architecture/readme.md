@@ -1,6 +1,6 @@
 # Architecture
 
-Note: The project currently uses a monorepo. It may be split into separate repos in the future once the design has stabilized. Or perhaps [git submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules) can be used to provide a convenience monorepo to simplify getting contributors up and running.
+Note: The project currently uses a monorepo. It may be split into separate repos in the future once the design has stabilized. Or perhaps [git submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules) can be used to provide a convenience monorepo to simplify getting contributors up and running. Note: [this](https://github.com/google/mono_repo.dart) may be useful.
 
 ## Requirements
 

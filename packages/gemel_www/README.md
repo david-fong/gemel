@@ -1,1 +1,3 @@
-A web server built using [Shelf](https://pub.dev/packages/shelf).
+# gemel_www
+
+Server for a development ecosystem aiming for structure and human-friendliness.

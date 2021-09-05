@@ -1,4 +1,6 @@
-A library for Dart developers.
+# gemel
+
+Types and logic shared by gemel_app and gemel_www.
 
 ## Usage
 
@@ -11,9 +13,3 @@ main() {
   var awesome = new Awesome();
 }
 ```
-
-## Features and bugs
-
-Please file feature requests and bugs at the [issue tracker][tracker].
-
-[tracker]: http://example.com/issues/replaceme
