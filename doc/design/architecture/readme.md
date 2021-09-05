@@ -1,5 +1,7 @@
 # Architecture
 
+Note: The project currently uses a monorepo. It may be split into separate repos in the future once the design has stabilized. Or perhaps [git submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules) can be used to provide a convenience monorepo to simplify getting contributors up and running.
+
 ## Requirements
 
 - Make a cross platform desktop application.
@@ -18,12 +20,14 @@
 
 - Terminal TUI: Nope. Can't do panels with smooth scrolling or any text that isn't aligned to the character grid.
 
-- A browser-based solution (ex. electron, NW.js, or tauri).
+- A browser-based solution (ex. electron, NW.js, tauri, Sciter, Kotlin multiplatform).
   - For a web frontend, I'd be looking for a DOM library that is light, simple to use, performant, and doesn't abstract too far away from standard HTML/CSS/JS. A project with a strong community backing is a big nice-to-have- I want to use something that will be well supported in the future, but I will look for something that I could live with even if further development for it was dropped tomorrow.
 
-- React Native
+- Desktop things: Qt, JavaFx, JUCE, WxWidgets, etc.
 
-- Dart
+- React Native, Proton Native
+
+- Flutter
 
 See the [./opt-app/](./opt-app/) folder for the dedicated evaluation documents.
 

@@ -1,85 +1,132 @@
 {
-    "files.exclude": {
-        // generic excludes:
-        "node_modules/{[^.@]*,}": true,
-        "package-lock.json": true,
-        "**/pnpm-lock.yaml": true,
-        "**/tsconfig.tsbuildinfo": true,
+	"files.exclude": {
+		// generic excludes:
+		"{.idea/,*.iml}": true,
+		"node_modules/{[^.@]*,}": true,
+		"package-lock.json": true,
+		"**/pnpm-lock.yaml": true,
+		"**/tsconfig.tsbuildinfo": true,
+		"{pubspec.lock,.packages,.metadata,.dart_tool/}": true,
 
-        // things that I might like to toggle:
-        // "**/*tsconfig*.json": true,
-        "target/": true,
-        "{**/.eslintrc.*,.eslintignore}": true,
-        "**/dist/**/*.map": true,
-        "**/node_modules/": true,
-    },
-    "search.exclude": {
-        "target/": true,
-        "node_modules/": true,
-        "**/*.code-search": true,
+		// things that I might like to toggle:
+		"**/node_modules/": true,
+		"{**/.eslintrc.*,.eslintignore}": true,
+		"**/dist/**/*.map": true,
+		"**/*.g.dart": true,
+		// "{windows,macos,linux}/": true,
+	},
+	"search.exclude": {
+		"node_modules/": true,
+		"**/*.code-search": true,
 
-        "**/*tsconfig*.json": false,
-        "{**/.eslintrc.*,.eslintignore}": false,
-    },
-    "files.associations": {
-        "**/dist/{client,server}/**/*.js": "text", // Loads bundled js much faster.
-        ".eslintignore": "ignore",
-    },
-    "json.schemas": [
-        {
-            "fileMatch": [ "*tsconfig*.json" ],
-            "url": "http://json.schemastore.org/tsconfig",
-        },{
-            "fileMatch": [ "*cSpell.json" ],
-            "url": "https://raw.githubusercontent.com/streetsidesoftware/cspell/cspell4/cspell.schema.json",
-        },{
-            "fileMatch": [ "*.webmanifest" ],
-            "url": "http://json.schemastore.org/web-manifest",
-        },{
-            "fileMatch": [ "*package*.json" ],
-            "url": "https://json.schemastore.org/package",
-        }
-    ],
+		"build/": true,
+		"{windows,macos,linux}/": true,
+		"**/*tsconfig*.json": false,
+		"{**/.eslintrc.*,.eslintignore}": false,
+	},
+	"files.associations": {
+		".eslintignore": "ignore",
+	},
+	"json.schemas": [
+		{
+			"fileMatch": [ "*tsconfig*.json" ],
+			"url": "http://json.schemastore.org/tsconfig",
+		},{
+			"fileMatch": [ "*cSpell.json" ],
+			"url": "https://raw.githubusercontent.com/streetsidesoftware/cspell/cspell4/cspell.schema.json",
+		},{
+			"fileMatch": [ "*.webmanifest" ],
+			"url": "http://json.schemastore.org/web-manifest",
+		},{
+			"fileMatch": [ "*package*.json" ],
+			"url": "https://json.schemastore.org/package",
+		}
+	],
+	// Causes the debug view to automatically appear when a breakpoint is hit. This
+	// setting is global and not configurable per-language.
+	"debug.openDebug": "openOnDebugBreak",
 
-    "files.trimTrailingWhitespace": true,
+	"files.trimTrailingWhitespace": true,
 
-    "typescript.tsdk": "./node_modules/typescript/lib",
-    "typescript.enablePromptUseWorkspaceTsdk": true,
-    "typescript.preferences.importModuleSpecifier": "non-relative",
+	"typescript.tsdk": "./node_modules/typescript/lib",
+	"typescript.enablePromptUseWorkspaceTsdk": true,
+	"typescript.preferences.importModuleSpecifier": "non-relative",
 
-    "todo-tree.filtering.useBuiltInExcludes": "file excludes",
-    "todo-tree.general.tags": [
-        "TODO.wait"  ,
-        "TODO.learn" ,
-        "TODO.design",
-        "TODO.doc"   ,
-        "TODO.impl"  ,
-        "TODO.test"  ,
-        "TODO.build" ,
-        "TODO",
-    ],
+	"todo-tree.filtering.useBuiltInExcludes": "file excludes",
+	"todo-tree.general.tags": [
+		"TODO.wait"  ,
+		"TODO.learn" ,
+		"TODO.design",
+		"TODO.doc"   ,
+		"TODO.impl"  ,
+		"TODO.test"  ,
+		"TODO.build" ,
+		"TODO",
+	],
 
-    "css.lint.validProperties": [
-        "composes",
-    ],
+	"css.lint.validProperties": [
+		"composes",
+	],
 
-    "javascript.suggest.autoImports": false,
-    "[javascript]": {
-        "editor.insertSpaces": false,
-    },
-    "[typescript]": {
-        "editor.insertSpaces": false,
-    },
-    "[typescriptreact]": {
-        "editor.insertSpaces": false,
-    },
-    "[css]": {
-        "editor.insertSpaces": false,
-    },
-    "[html]": {
-        "editor.insertSpaces": false,
-    },
-    "[rust]": {
-        "editor.insertSpaces": false,
-    },
- }
+	"javascript.suggest.autoImports": false,
+	"[javascript]": {
+		"editor.insertSpaces": false,
+	},
+	"[typescript]": {
+		"editor.insertSpaces": false,
+	},
+	"[typescriptreact]": {
+		"editor.insertSpaces": false,
+	},
+	"[css]": {
+		"editor.insertSpaces": false,
+	},
+	"[html]": {
+		"editor.insertSpaces": false,
+	},
+	"[json]": {
+		"editor.insertSpaces": false,
+	},
+	"[rust]": {
+		"editor.insertSpaces": false,
+	},
+
+	"[dart]": {
+		// Automatically format code on save and during typing of certain characters
+		// (like `;` and `}`).
+		"editor.formatOnSave": true,
+		"editor.formatOnType": true,
+
+		// Draw a guide line at 80 characters, where Dart's formatting will wrap code.
+		"editor.rulers": [80],
+
+		// Disables built-in highlighting of words that match your selection. Without
+		// this, all instances of the selected text will be highlighted, interfering
+		// with Dart's ability to highlight only exact references to the selected variable.
+		"editor.selectionHighlight": false,
+
+		// By default, VS Code prevents code completion from popping open when in
+		// "snippet mode" (editing placeholders in inserted code). Setting this option
+		// to `false` stops that and allows completion to open as normal, as if you
+		// weren't in a snippet placeholder.
+		"editor.suggest.snippetsPreventQuickSuggestions": false,
+
+		// By default, VS Code will pre-select the most recently used item from code
+		// completion. This is usually not the most relevant item.
+		//
+		// "first" will always select top item
+		// "recentlyUsedByPrefix" will filter the recently used items based on the
+		//     text immediately preceding where completion was invoked.
+		"editor.suggestSelection": "first",
+
+		// Allows pressing <TAB> to complete snippets such as `for` even when the
+		// completion list is not visible.
+		"editor.tabCompletion": "onlySnippets",
+
+		// By default, VS Code will populate code completion with words found in the
+		// current file when a language service does not provide its own completions.
+		// This results in code completion suggesting words when editing comments and
+		// strings. This setting will prevent that.
+		"editor.wordBasedSuggestions": false,
+	}
+}

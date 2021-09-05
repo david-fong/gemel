@@ -38,6 +38,9 @@
 
 *.rs              text diff=rust
 
+*.dart            text
+*.g.dart          text linguist-generated
+
 # Docker
 Dockerfile        text
 

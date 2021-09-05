@@ -60,18 +60,18 @@ Note to self: keep in mind whatever symbols will be used for mutability, nullabi
 
 The fact that I'm coming up with such terse notations for these makes me jealous for the sake of primitive types 😅. Maybe I should try to come up with terse notations for those too.
 
-### Random-Access-Capable
+### "Random-Access"-Capable
 
-- Fixed-Size Ordered Collection: ` #N@T ` where N is an integer literal or a compile-time constant and T is the element type.
-- Variable-Size Ordered Collection: ` ##@T ` where T is the element type. hehe this looks like a tie-fighter.
-- Unordered Variable-Size Collection: ` #'@T ` where T is the element type.
-- Map: ` #'@K:V ` where K is the key type and V is the value type.
+- Fixed-Size Ordered Collection: ` #@>N:T ` where N is an integer literal or a compile-time constant and T is the element type.
+- Variable-Size Ordered Collection: ` #@>:T ` where T is the element type.
+- Unordered Variable-Size Collection: ` #@'T:bool ` where T is the element type.
+- Map: ` #@'K:V ` where K is the key type and V is the value type.
 - Others: ` #;stack:T `, ` #;queue:T `. Note: Implementation may choose to expose itself as non-random-access-capable.
 
 ### Non-Random-Access-Capable
 
-- Iterable: ` #> ` or ` #, `
-  - I'm always wary of how hard to see/distinguish a comma is. The angle bracket only makes sense to people who speak LTR languages, but I think bidirectional human-readable-code is out of my problem-solving depth.
+- Iterable: ` #>T ` or ` #, `
+  - I'm always wary of how hard to see/distinguish a comma is. The angle bracket only makes sense to people who speak LTR human languages, but I think deeply supporting bidirectional human-readable-code is out of my problem-solving depth, so it may as well be allowed.
 - Future/Promise: ` #..T `
 - Asynchronous Iterable (Stream): ` #>..T ` or ` #,.. `
 
@@ -80,7 +80,7 @@ The fact that I'm coming up with such terse notations for these makes me jealous
 - Nullable: ` #?T ` or ` 00/T ` where T is the element type.
   - I like how the double-zero option reads, but the question-mark notation is much more widespread, and it opens up the nice opportunity to do the same-content-and-container-symbols thing: `T?'field`
 - Reference: ` #@T ` where T is the value type.
-  - I think the at-sign option is super friendly (intuitive) to most people. I'm just worried about it conceptually clashing with the same usage for containers capable of random access... I think it's okay- it's like- here, you don't need to provide any further addressing information, because it is the address.
+  - I think the at-sign option is super friendly (intuitive) to most people. I'm just worried about it conceptually clashing with the same usage for containers capable of random access...
 
 - Mutable: ` : ` ? (as a prefix (only allowed before the typename of the value of a variable, or the the typename of the value referenced by a reference)).
 - Compile-time Constant: ` . `.

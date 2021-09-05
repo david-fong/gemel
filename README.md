@@ -44,7 +44,7 @@ I hope that they will also try to find grounds for compatibility, but I don't ha
 
 ## Architecture
 
-For information about the project architecture and technical design goals, see [the dedicated documents](doc/design/architecture).
+For information about the project architecture and technical design goals, see [the dedicated documents](doc/design/architecture/readme.md).
 
 ## Misc
 
