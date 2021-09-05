@@ -1,26 +1,24 @@
 {
 	"files.exclude": {
 		// generic excludes:
-		"{.idea/,*.iml}": true,
-		"node_modules/{[^.@]*,}": true,
-		"package-lock.json": true,
-		"**/pnpm-lock.yaml": true,
-		"**/tsconfig.tsbuildinfo": true,
-		"{pubspec.lock,.packages,.metadata,.dart_tool/}": true,
+		"**/{.idea/,*.iml}": true,
+		"**/node_modules/{[^.@]*,}": true,
+		"**/{package-lock.json,pnpm-lock.yaml}": true,
+		"**/{pubspec.lock,.packages,.metadata,.dart_tool/}": true,
 
 		// things that I might like to toggle:
 		"**/node_modules/": true,
 		"{**/.eslintrc.*,.eslintignore}": true,
 		"**/dist/**/*.map": true,
 		"**/*.g.dart": true,
-		// "{windows,macos,linux}/": true,
+		// "packages/gemel_app/{windows,macos,linux}/": true,
 	},
 	"search.exclude": {
 		"node_modules/": true,
 		"**/*.code-search": true,
 
 		"build/": true,
-		"{windows,macos,linux}/": true,
+		"packages/gemel_app/{windows,macos,linux}/": true,
 		"**/*tsconfig*.json": false,
 		"{**/.eslintrc.*,.eslintignore}": false,
 	},
