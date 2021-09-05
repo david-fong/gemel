@@ -42,27 +42,27 @@
 
 ## State Management
 
-I'm feeling really overwhelmed by the number of state management methods, but coming from the web world where there are a hundred ways to do every single thing, I guess I can't complain much.
+Need something that:
 
-### Requirements
+- can performantly update widgets high up in the tree without rebuilding everything beneath them.
+- allows for easily reusing model code between client and server (where presumably, the flutter libraries will not be depended upon).
 
-- Should allow for easily reusing model code between client and server.
+[`ValueListenableBuilder`](https://api.flutter.dev/flutter/widgets/ValueListenableBuilder-class.html) has a nifty mechanism: the builder takes a third argument named "child" for a child widget tree that shouldn't rebuild upon changes.
 
-### Evaluation of Options
+All these interfaces are part of the Flutter foundation library (which I presumably don't want in the server package), so I can't design my AST nodes with all the fields being `ValueNotifiers`.
 
-Note: Some of these problems may actually be solvable through setting up some [code generation](https://www.raywenderlich.com/22180993-flutter-code-generation-getting-started).
+1. Express all the AST node fields as get/set pairs. Write some [code generation](https://www.raywenderlich.com/22180993-flutter-code-generation-getting-started) scripting for the clientside to generate parallel classes for the AST nodes where every field is instead a `ValueListenable` that hooks into the get/set pairs.
 
-- MobX looks nice and simple, but it seems to violate the client/server model requirement (the annotations, ObservableList, etc.).
+1. Then, either:
+    - subclass the originals and add them through
+      - extension/mixin
+      - composition <- I like this one the most because of the cognitive information scoping.
+    - maintain a parallel AST (not sure if this is a clean approach when it comes to hooking into the getters/setters).
 
-- I'm wondering if I can start by just having a big global tree containing state, and streams to notify the widget tree of granular state changes (using [StreamBuilder](https://api.flutter.dev/flutter/widgets/StreamBuilder-class.html)). I can look for state management libraries to see if there's anything that can make streams easier to work with (maybe RxDart?).
-  - Just found out that [`ValueListenableBuilder`](https://api.flutter.dev/flutter/widgets/ValueListenableBuilder-class.html) has a nifty mechanism: the builder takes a third argument named "child" for a child widget tree that shouldn't rebuild upon changes. StreamBuilder doesn't have this...
-    - If I don't want to import the flutter foundation library into the base code (which is shared by client and server), then I can't design my AST nodes with all the fields being `ValueNotifiers`.
-      - Express all the AST node fields as get/set pairs. Write some code-generation scripting for the clientside to generate parallel classes for the AST nodes where every field is instead a `ValueListenable` that hooks into the get/set pairs. Then, either:
-        - subclass the originals and add them through
-          - extension/mixin
-          - composition <- I like this one the most because of the cognitive information scoping.
-        - maintain a parallel AST (not sure if this is a clean approach when it comes to hooking into the getters/setters).
-        - For all of these options, instances of the original nodes will need to have references to the "listenable" nodes, and override its own get/set pairs to hook into the listenable nodes. The choice may also depend on whichever results in easier [JSON codegen](https://flutter.dev/docs/development/data-and-backend/json).
+1. For all of these options, instances of the original nodes will need to have references to the "listenable" nodes, and override its own get/set pairs to hook into the listenable nodes. The choice may also depend on whichever results in easier [JSON codegen](https://flutter.dev/docs/development/data-and-backend/json).
+
+1. Will need to write a class similar to the implementation of [`ValueNotifier`](https://github.com/flutter/flutter/blob/master/packages/flutter/lib/src/foundation/change_notifier.dart) (which extends `ChangeNotifier` and implements `ValueListenable`), which instead of storing a value, takes a closure for getting the value.
+    - Note: there's an approved language proposal for ["tear-offs" for getters](https://stackoverflow.com/a/13552395/11107541), (which would give some terser syntax here,) but I'm not sure if it's been implemented yet. Okay nvm [it got removed](https://github.com/dart-lang/sdk/issues/27518). I'll just need to use `() => this.field`.
 
 ## Verdict
 

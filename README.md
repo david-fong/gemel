@@ -22,7 +22,10 @@ It will combine a collaborative, real-time [structure editor](https://wikipedia.
 
 ### Non-Goals
 
-Preface: None of these are "ideological" non-goals. They are simply there to help me set boundaries / realistic expectations and restrain myself from getting derailed or burnt-out trying to tackle difficult (_but important_) problems that aren't core to the project's goals.
+Preface: None of these are "ideological" non-goals. They simply exist to help me set realistic boundaries and restrain myself from getting derailed or burnt-out trying to tackle difficult (_but important_) problems that aren't core to the project's goals.
+
+<details>
+<summary>Click to expand</summary>
 
 - Getting it "right" every step of the way.
 - Compatibility with any existing languages, editors, VCS, or collaborative platforms.
@@ -33,14 +36,16 @@ Preface: None of these are "ideological" non-goals. They are simply there to hel
 - Supporting a keyboard-less application interface.
 - Backward compatibility.
 - FFI support (may be possible, but it isn't a goal).
+- Any kind of self-hosting.
+</details>
 
 ### What impact I want gemel to have
 
 The hope is that gemel can faithfully demonstrate benefits of structured programming at a high enough degree of quality to spark other peoples' interest in moving toward such a direction when designing future programming ecosystems.
 
-I would love for gemel to gain interest as a proof-of-concept and exploring-ground for building a human-friendlier programming ecosystem. I would
+I would love for gemel to gain interest as a proof-of-concept and exploring-ground for building a human-friendlier programming ecosystem. I would love for people to eventually join the continual effort to improve it. The intention is not for gemel itself to become widely depended upon for real-world work.
 
-I hope that they will also try to find grounds for compatibility, but I don't have faith that it's realistically achievable. Different programming languages exist because one size does not fit all. But who knows? We have things like LSP and tree-sitter, so maybe it is possible.
+I hope people developing future gemel-like projects will also try to find grounds for compatibility, but I don't have much faith that that's realistically achievable; different programming languages exist because one size does not fit all. But who knows? We have things like LSP and tree-sitter, so maybe it is possible.
 
 ## Architecture
 
