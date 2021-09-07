@@ -1,9 +1,10 @@
 import 'dart:collection';
 import 'package:flutter/widgets.dart';
 
+///
 class _VarRef4Widget<T> {
   _VarRef4Widget(this.scheduleBuild, {required this.index});
-  final void Function() scheduleBuild;
+  final VoidCallback scheduleBuild;
   int index;
 }
 
@@ -18,7 +19,7 @@ class Var4Widget<T> {
   List<_VarRef4Widget?> _subs = List.filled(0, null);
   int _numSubs = 0;
 
-  _VarRef4Widget<T> sub(void Function() scheduleBuild) {
+  _VarRef4Widget<T> sub(VoidCallback scheduleBuild) {
     if (_numSubs == 0) {
       _subs = List.filled(1, null);
     } else if (_numSubs == _subs.length) {
@@ -55,24 +56,31 @@ class Var4Widget<T> {
 }
 
 /// Based on [ValueListenableBuilder]
-/// TODO make [child]'s type generic.
-class VarRefBuilder<T> extends StatefulWidget {
+///
+/// [C] - Children invariant WRT [wVar]. Passed to [State.build].
+/// TODO see if there's a way to sub to variadic number of strongly-typed vars.
+/// This might help: https://pub.dev/packages/tuple
+class VarRefBuilder<T, C> extends StatefulWidget {
   const VarRefBuilder({
     Key? key,
     required this.wVar,
     required this.builder,
-    this.child,
+    this.children,
   }) : super(key: key);
 
+  /// Should not ever access [wVar.notify].
   final Var4Widget<T> wVar;
-  final ValueWidgetBuilder<T> builder;
-  final Widget? child;
+
+  /// [builder] must not edit the variable being referenced.
+  final Widget Function(BuildContext, T, C?) builder;
+  final C? children;
 
   @override
-  State<StatefulWidget> createState() => _VarRefBuilderState<T>();
+  State<StatefulWidget> createState() => _VarRefBuilderState<T, C>();
 }
 
-class _VarRefBuilderState<T> extends State<VarRefBuilder<T>> {
+///
+class _VarRefBuilderState<T, C> extends State<VarRefBuilder<T, C>> {
   late _VarRef4Widget<T> _sub;
   @override
   void initState() {
@@ -81,7 +89,7 @@ class _VarRefBuilderState<T> extends State<VarRefBuilder<T>> {
   }
 
   @override
-  void didUpdateWidget(VarRefBuilder<T> oldWidget) {
+  void didUpdateWidget(VarRefBuilder<T, C> oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.wVar != widget.wVar) {
       oldWidget.wVar.unsub(_sub);
@@ -99,5 +107,5 @@ class _VarRefBuilderState<T> extends State<VarRefBuilder<T>> {
 
   @override
   Widget build(BuildContext context) =>
-      widget.builder(context, widget.wVar.val(), widget.child);
+      widget.builder(context, widget.wVar.val(), widget.children);
 }
