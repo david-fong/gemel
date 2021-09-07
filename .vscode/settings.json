@@ -11,7 +11,7 @@
 		"{**/.eslintrc.*,.eslintignore}": true,
 		"**/dist/**/*.map": true,
 		"**/*.g.dart": true,
-		// "packages/gemel_app/{windows,macos,linux}/": true,
+		"packages/gemel_app/{windows,macos,linux}/": true,
 	},
 	"search.exclude": {
 		"node_modules/": true,

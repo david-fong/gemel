@@ -1,3 +1,23 @@
 include: package:flutter_lints/flutter.yaml
 # https://dart-lang.github.io/linter/lints/
 # https://pub.dev/packages/flutter_lints
+
+analyzer:
+  strong-mode:
+    implicit-casts: false
+    implicit-dynamic: false
+
+linter:
+  rules:
+    use_to_and_as_if_applicable: true
+    sort_child_properties_last: true
+    use_string_buffers: true
+    unnecessary_await_in_return: true
+    use_is_even_rather_than_modulo: true
+    use_named_constants: true
+    # require_trailing_commas: true
+    tighten_type_of_initializing_formals: true
+    prefer_final_in_for_each: true
+    prefer_final_locals: true
+    prefer_interpolation_to_compose_strings: true
+    prefer_expression_function_bodies: true

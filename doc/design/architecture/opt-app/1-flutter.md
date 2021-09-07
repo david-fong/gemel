@@ -39,6 +39,8 @@
 - https://api.flutter.dev/flutter/services/MethodCodec-class.html
 - https://api.flutter.dev/flutter/widgets/RichText-class.html
 - https://dart.dev/tools/pub/package-layout
+- https://github.com/Solido/awesome-flutter
+- https://itsallwidgets.com/
 
 ## State Management
 
@@ -51,7 +53,7 @@ Need something that:
 
 All these interfaces are part of the Flutter foundation library (which I presumably don't want in the server package), so I can't design my AST nodes with all the fields being `ValueNotifiers`.
 
-1. Express all the AST node fields as get/set pairs. Write some [code generation](https://www.raywenderlich.com/22180993-flutter-code-generation-getting-started) scripting for the clientside to generate parallel classes for the AST nodes where every field is instead a `ValueListenable` that hooks into the get/set pairs.
+1. Write some [code generation](https://www.raywenderlich.com/22180993-flutter-code-generation-getting-started) scripting for the clientside to generate parallel classes for the AST nodes where every field is instead a `ValueListenable` that hooks into the get/set pairs.
 
 1. Then, either:
     - subclass the originals and add them through
@@ -60,9 +62,12 @@ All these interfaces are part of the Flutter foundation library (which I presuma
     - maintain a parallel AST (not sure if this is a clean approach when it comes to hooking into the getters/setters).
 
 1. For all of these options, instances of the original nodes will need to have references to the "listenable" nodes, and override its own get/set pairs to hook into the listenable nodes. The choice may also depend on whichever results in easier [JSON codegen](https://flutter.dev/docs/development/data-and-backend/json).
+    - or... a weird alternative would be to generate the AST nodes with the `ValueNotifier` fields, and override the regular fields to delegate to the corresponding `ValueNotifier`.
 
 1. Will need to write a class similar to the implementation of [`ValueNotifier`](https://github.com/flutter/flutter/blob/master/packages/flutter/lib/src/foundation/change_notifier.dart) (which extends `ChangeNotifier` and implements `ValueListenable`), which instead of storing a value, takes a closure for getting the value.
-    - Note: there's an approved language proposal for ["tear-offs" for getters](https://stackoverflow.com/a/13552395/11107541), (which would give some terser syntax here,) but I'm not sure if it's been implemented yet. Okay nvm [it got removed](https://github.com/dart-lang/sdk/issues/27518). I'll just need to use `() => this.field`.
+    - It will need to publicly expose the `notifyListeners` method, which is marked as protected in `ChangeNotifier`.
+    - At this point, I'm considering just making my own thing like `ChangeNotifier` except the callback takes the value. That's what I expected to see in the first place when I was learning about it. `ChangeNotifier` also does some acrobatics related to allowing listeners to result in `notifyListeners` being called reentrantly, which I don't need. I don't even understand why that would be desireable.
+      - I could extend `StreamBuilder` to make it take a child argument, but I don't think I need to complexity of streams (error handling, buffered pause/unpause), etc. One interesting thing about broadcast streams is that it uses a linked-list data-structure for its listeners.
 
 ## Verdict
 

@@ -2,10 +2,22 @@ include: package:lints/recommended.yaml
 # http://dart-lang.github.io/linter/lints.
 # https://dart.dev/guides/language/analysis-options
 
-# Uncomment to specify additional rules.
-# linter:
-#   rules:
+analyzer:
+  strong-mode:
+    implicit-casts: false
+    implicit-dynamic: false
 
-# analyzer:
-#   exclude:
-#     - path/to/excluded/files/**
+linter:
+  rules:
+    use_to_and_as_if_applicable: true
+    # sort_child_properties_last: true
+    use_string_buffers: true
+    unnecessary_await_in_return: true
+    use_is_even_rather_than_modulo: true
+    use_named_constants: true
+    # require_trailing_commas: true
+    tighten_type_of_initializing_formals: true
+    prefer_final_in_for_each: true
+    prefer_final_locals: true
+    prefer_interpolation_to_compose_strings: true
+    prefer_expression_function_bodies: true

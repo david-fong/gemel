@@ -1,6 +1,10 @@
 # Cool Things in Other Languages
 
+In no particular order
+
 - C# terse accessor syntax.
+
+- Typescript similar notation for types and corresponding literal instantiations.
 
 - [dart's meta annotations](https://api.flutter.dev/flutter/meta/meta-library.html).
 - dart's continuation operator.
