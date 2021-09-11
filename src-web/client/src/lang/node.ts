@@ -6,7 +6,6 @@ export interface Node {
 }
 export namespace Node {
 	export enum TypeIds {
-		Shebang,
 		Zone,
 		Variable,
 		Function,

@@ -64,11 +64,6 @@ All these interfaces are part of the Flutter foundation library (which I presuma
 1. For all of these options, instances of the original nodes will need to have references to the "listenable" nodes, and override its own get/set pairs to hook into the listenable nodes. The choice may also depend on whichever results in easier [JSON codegen](https://flutter.dev/docs/development/data-and-backend/json).
     - or... a weird alternative would be to generate the AST nodes with the `ValueNotifier` fields, and override the regular fields to delegate to the corresponding `ValueNotifier`.
 
-1. Will need to write a class similar to the implementation of [`ValueNotifier`](https://github.com/flutter/flutter/blob/master/packages/flutter/lib/src/foundation/change_notifier.dart) (which extends `ChangeNotifier` and implements `ValueListenable`), which instead of storing a value, takes a closure for getting the value.
-    - It will need to publicly expose the `notifyListeners` method, which is marked as protected in `ChangeNotifier`.
-    - At this point, I'm considering just making my own thing like `ChangeNotifier` except the callback takes the value. That's what I expected to see in the first place when I was learning about it. `ChangeNotifier` also does some acrobatics related to allowing listeners to result in `notifyListeners` being called reentrantly, which I don't need. I don't even understand why that would be desireable.
-      - I could extend `StreamBuilder` to make it take a child argument, but I don't think I need to complexity of streams (error handling, buffered pause/unpause), etc. One interesting thing about broadcast streams is that it uses a linked-list data-structure for its listeners.
-
 ## Verdict
 
 Interested in using. Will try it out.

@@ -2,17 +2,15 @@
 
 Note: The project currently uses a monorepo. It may be split into separate repos in the future once the design has stabilized. Or perhaps [git submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules) can be used to provide a convenience monorepo to simplify getting contributors up and running. Note: [this](https://github.com/google/mono_repo.dart) may be useful.
 
-## Requirements
+## Option Evaluation Method
 
-- Make a cross platform desktop application.
+- Requirement: Allows making a cross platform desktop application that hearkens to the look-and-feel and quality/usability of VS Code.
 
-- Hearken to the look-and-feel and quality of VS Code.
+- Requirement: Allows implementing writing, compiling and running code without an internet connection (implementing compiling and running is _not_ a core goal, but it needs to be possible).
 
-- Enable writing, compiling and running code without an internet connection.
+- Favour architectures that are easy to maintain and allow for easy code reuse between client and server.
 
-- Design to keep resource usage (disk, memory, network) on the user's machine low.
-
-- Favour a simple architecture and easy code reuse.
+- Favour architectures with higher enablement for keeping resource usage (disk, memory, network) on the user's machine low.
 
 ## Choices to Make
 

@@ -55,6 +55,9 @@ ${join("", (n) => """
       widget.builder(context, ${join(", ", (n) => "widget.var$n.val()")}, widget.children);
 }
 """;
+// The option of chaining extension _almost_ works. It isn't clean because it
+// requires overriding the builder field of the State classes. Perhaps I'll find
+// a solution in the future. For now, this should work fine.
 }
 
 void main() {

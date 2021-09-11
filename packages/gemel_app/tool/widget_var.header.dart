@@ -9,6 +9,8 @@ class _VarRef4Widget<T> {
 }
 
 /// Specialized look-alike to [ValueNotifier].
+/// TODO it would be interesting in the future to play with the list resizing
+/// logic to see if there are more performant threshold calculations.
 class Var4Widget<T> {
   Var4Widget(this.val);
   final T Function() val;

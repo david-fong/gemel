@@ -2,23 +2,22 @@
 	"files.exclude": {
 		// generic excludes:
 		"**/{.idea/,*.iml}": true,
-		"**/node_modules/{[^.@]*,}": true,
 		"**/{package-lock.json,pnpm-lock.yaml}": true,
 		"**/{pubspec.lock,.packages,.metadata,.dart_tool/}": true,
 
 		// things that I might like to toggle:
 		"**/node_modules/": true,
-		"{**/.eslintrc.*,.eslintignore}": true,
 		"**/dist/**/*.map": true,
 		"**/*.g.dart": true,
+		"**/build/": true,
 		"packages/gemel_app/{windows,macos,linux}/": true,
 	},
 	"search.exclude": {
 		"node_modules/": true,
 		"**/*.code-search": true,
-
-		"build/": true,
+		"**/build/": false,
 		"packages/gemel_app/{windows,macos,linux}/": true,
+
 		"**/*tsconfig*.json": false,
 		"{**/.eslintrc.*,.eslintignore}": false,
 	},
@@ -46,21 +45,11 @@
 
 	"files.trimTrailingWhitespace": true,
 
+	"dart.allowAnalytics": false,
+
 	"typescript.tsdk": "./node_modules/typescript/lib",
 	"typescript.enablePromptUseWorkspaceTsdk": true,
 	"typescript.preferences.importModuleSpecifier": "non-relative",
-
-	"todo-tree.filtering.useBuiltInExcludes": "file excludes",
-	"todo-tree.general.tags": [
-		"TODO.wait"  ,
-		"TODO.learn" ,
-		"TODO.design",
-		"TODO.doc"   ,
-		"TODO.impl"  ,
-		"TODO.test"  ,
-		"TODO.build" ,
-		"TODO",
-	],
 
 	"css.lint.validProperties": [
 		"composes",
@@ -85,15 +74,12 @@
 	"[json]": {
 		"editor.insertSpaces": false,
 	},
-	"[rust]": {
-		"editor.insertSpaces": false,
-	},
 
 	"[dart]": {
 		// Automatically format code on save and during typing of certain characters
 		// (like `;` and `}`).
 		"editor.formatOnSave": true,
-		"editor.formatOnType": true,
+		// "editor.formatOnType": true,
 
 		// Draw a guide line at 80 characters, where Dart's formatting will wrap code.
 		"editor.rulers": [80],
