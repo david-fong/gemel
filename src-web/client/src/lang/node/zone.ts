@@ -1,14 +1,6 @@
 import { Node } from "../node";
 
 
-export class Node_Zone implements Node {
-	public serialize(): string {
-		throw new Error("Method not implemented.");
-	}
-	public static deserialize(stream: ReadableStream): Node_Zone {
-		return undefined!;
-	}
-}
 export namespace Node_Zone {
 	export interface Model {
 		id: number;

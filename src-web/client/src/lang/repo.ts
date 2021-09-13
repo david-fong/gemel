@@ -1,7 +1,0 @@
-
-/**
- *
- */
-interface Repo {
-	validate();
-}

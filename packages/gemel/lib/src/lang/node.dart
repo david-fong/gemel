@@ -1,14 +1,17 @@
 ///
-abstract class Node {}
-
-///
 class Explainer {
-  String value = "";
+  /// A list of [WordId] and [String].
+  // TODO design way to reference other declarations- not just words.
+  final List<Object> value;
+  Explainer(this.value);
 }
 
 ///
-abstract class ExplainableNode implements Node {
-  final Explainer? explainer = null;
+abstract class Explainable {
+  final Explainer? explainer;
+  Explainable({
+    this.explainer,
+  });
 }
 
 ///
@@ -25,9 +28,14 @@ enum NodeKind {
   traitObjType,
   classType,
   classInstVar,
+  classInstFunc,
   class$,
   constNum,
   constText,
+}
+
+///
+enum StatementNodeKind {
   statement, // is this necessary?
   statementScope,
   statementHave,
@@ -40,9 +48,3 @@ enum NodeKind {
   statementTry,
   statementAnswer,
 }
-
-const Set<NodeKind> explainableNodeKinds = {
-  NodeKind.zone,
-  NodeKind.word,
-  NodeKind.class$,
-};

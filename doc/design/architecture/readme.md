@@ -4,9 +4,10 @@ Note: The project currently uses a monorepo. It may be split into separate repos
 
 ## Option Evaluation Method
 
-- Requirement: Allows making a cross platform desktop application that hearkens to the look-and-feel and quality/usability of VS Code.
+- Requirement: A secure, cross platform application that hearkens to the look-and-feel and quality/usability of VS Code.
 
-- Requirement: Allows implementing writing, compiling and running code without an internet connection (implementing compiling and running is _not_ a core goal, but it needs to be possible).
+- Requirement: Allow implementing writing, compiling and running code without an internet connection (implementing compiling and running is _not_ a core goal, but it needs to be possible).
+  - This rules out an in-browser solution.
 
 - Favour architectures that are easy to maintain and allow for easy code reuse between client and server.
 

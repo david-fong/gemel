@@ -1,3 +1,0 @@
-/**
- * Ie. a statement.
- */
