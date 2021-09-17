@@ -51,18 +51,15 @@ Need something that:
 
 [`ValueListenableBuilder`](https://api.flutter.dev/flutter/widgets/ValueListenableBuilder-class.html) has a nifty mechanism: the builder takes a third argument named "child" for a child widget tree that shouldn't rebuild upon changes.
 
+[JSON codegen](https://flutter.dev/docs/development/data-and-backend/json)
+
 All these interfaces are part of the Flutter foundation library (which I presumably don't want in the server package), so I can't design my AST nodes with all the fields being `ValueNotifiers`.
 
-1. Write some [code generation](https://www.raywenderlich.com/22180993-flutter-code-generation-getting-started) scripting for the clientside to generate parallel classes for the AST nodes where every field is instead a `ValueListenable` that hooks into the get/set pairs.
+Write some [code generation](https://www.raywenderlich.com/22180993-flutter-code-generation-getting-started) scripting for the clientside to generate extensions of the AST nodes. Generate fields like `_getField1() => field1;` which will be passed to construct `Var4Widget`s (anonymous functions also work, but they will produce a new closure each time, which may not be desirable. This is only really necessary for option 2). Override setter for `field1` to also call `notify` on a parallel `Var4Widget` instance tracking `field1` (via `_getField1`).
 
-1. Then, either:
-    - subclass the originals and add them through
-      - extension/mixin
-      - composition <- I like this one the most because of the cognitive information scoping.
-    - maintain a parallel AST (not sure if this is a clean approach when it comes to hooking into the getters/setters).
+- Option 1: Generate a parallel class for each AST node where all the fields are replaced by `Var4Widget`s. Then subclass the originals and add them through composition (I like this better than extension/mixin because of the cognitive information scoping).
 
-1. For all of these options, instances of the original nodes will need to have references to the "listenable" nodes, and override its own get/set pairs to hook into the listenable nodes. The choice may also depend on whichever results in easier [JSON codegen](https://flutter.dev/docs/development/data-and-backend/json).
-    - or... a weird alternative would be to generate the AST nodes with the `ValueNotifier` fields, and override the regular fields to delegate to the corresponding `ValueNotifier`.
+- Option 2 (probably more space efficient in cases where it is likely that a large proportion of listenable variables have no listeners, but adds slight lookup overhead to notifying subscribers of new values): Generate extension methods for sub/unsub on the extensions of the nodes, which lazily generate/remove the listener in a global pool as needed, keying it by the `_getFieldN` tearoff.
 
 ## Verdict
 

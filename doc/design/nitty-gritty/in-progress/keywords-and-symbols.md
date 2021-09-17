@@ -20,11 +20,11 @@
 - Dictionary: ` " ` or ` "" ` or ` ": `
   - Noun Specifier: ` : ` (same as in variable editing)
   - Verb specifier: `` ` `` (same as in action declaration)
-  - Adjective / adverb / variant name: ` ~ ` (? not decided on this)
+  - Adjective / adverb / variant name: ` ~ ` or ` / ` (? not decided on this)
 
 ## Variables and Functions
 
-- Variable Declaration: ` ' ` or ` @' ` or ` :: ` (all requiring a trailing space)
+- Variable Declaration: ` ' ` or ` :: ` (all requiring a trailing space)
 - Variable Edit: ` : `
 - Calculation: ` $ ` or ` = `
 - Action: `` ` ``
@@ -39,7 +39,7 @@
 
 or perhaps if the placements are very well defined (while still being configurable) for value and type inputs, the bracket types should be the same?
 
-- Throw Exception: ` ! ` (? not decided on this)
+- Throw Exception: ` ! ` or ` !!! ` (? not decided on this)
 
 ## Class Definition
 
@@ -70,10 +70,9 @@ The fact that I'm coming up with such terse notations for these makes me jealous
 
 ### Non-Random-Access-Capable
 
-- Iterable: ` #>T ` or ` #, `
-  - I'm always wary of how hard to see/distinguish a comma is. The angle bracket only makes sense to people who speak LTR human languages, but I think deeply supporting bidirectional human-readable-code is out of my problem-solving depth, so it may as well be allowed.
+- Iterable (an "instant feed" of something): ` #>.T `
 - Future/Promise: ` #..T `
-- Asynchronous Iterable (Stream): ` #>..T ` or ` #,.. `
+- Asynchronous Iterable (Stream): ` #>..T `
 
 ## Type "Modifiers"
 

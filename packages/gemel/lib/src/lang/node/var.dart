@@ -1,17 +1,18 @@
-import 'type.dart';
+import '../node.dart';
 import 'vocab.dart';
+import 'type.dart';
 
 typedef VariableId = int;
 
 ///
-class Variable {
+class Variable with Explainable {
   final VariableId id;
   final Name name;
-  final bool reassignable;
-  final Type type;
+  bool reassignable;
+  Type type;
 
-  Variable({
-    required this.id,
+  Variable(
+    this.id, {
     required this.name,
     required this.reassignable,
     required this.type,

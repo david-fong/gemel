@@ -9,7 +9,7 @@ enum WordKind {
 typedef WordId = int;
 
 ///
-class Word extends Explainable {
+class Word with Explainable {
   /// Foreign key to owner.
   VocabId vocabId;
 
@@ -18,8 +18,8 @@ class Word extends Explainable {
   WordKind kind;
   final List<Object> value;
 
-  Word({
-    required this.id,
+  Word(
+    this.id, {
     required this.kind,
     required this.vocabId,
     required this.value,
@@ -29,11 +29,16 @@ class Word extends Explainable {
 typedef VocabId = int;
 
 ///
-class Vocab extends Explainable {
+class Vocab with Explainable {
   final VocabId id;
+  final Name name;
   final List<WordId> words;
 
-  Vocab(this.id, this.words);
+  Vocab(
+    this.id, {
+    required this.name,
+    required this.words,
+  });
 }
 
 ///

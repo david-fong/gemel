@@ -7,8 +7,8 @@ String generate(final int howMany) {
   String list(String prefix) => join(", ", (n) => "$prefix$n");
   return """
 
-class VarRef${howMany}Builder<${list("T")}, C> extends StatefulWidget {
-  const VarRef${howMany}Builder({
+class VarSub${howMany}Builder<${list("T")}, C> extends StatefulWidget {
+  const VarSub${howMany}Builder({
     Key? key,
     ${join("\n    ", (n) => "required this.var$n,")}
     required this.builder,
@@ -20,11 +20,11 @@ class VarRef${howMany}Builder<${list("T")}, C> extends StatefulWidget {
   final C? children;
 
   @override
-  State<StatefulWidget> createState() => _VarRef${howMany}BuilderState<${list("T")}, C>();
+  State<StatefulWidget> createState() => _VarSub${howMany}BuilderState<${list("T")}, C>();
 }
 
-class _VarRef${howMany}BuilderState<${list("T")}, C> extends State<VarRef${howMany}Builder<${list("T")}, C>> {
-  ${join("\n  ", (n) => "late _VarRef4Widget<T$n> _sub$n;")}
+class _VarSub${howMany}BuilderState<${list("T")}, C> extends State<VarSub${howMany}Builder<${list("T")}, C>> {
+  ${join("\n  ", (n) => "late _VarSub4Widget<T$n> _sub$n;")}
   @override
   void initState() {
     super.initState();
@@ -32,15 +32,14 @@ class _VarRef${howMany}BuilderState<${list("T")}, C> extends State<VarRef${howMa
   }
 
   @override
-  void didUpdateWidget(VarRef${howMany}Builder<${list("T")}, C> oldWidget) {
+  void didUpdateWidget(VarSub${howMany}Builder<${list("T")}, C> oldWidget) {
     super.didUpdateWidget(oldWidget);
 ${join("", (n) => """
     if (oldWidget.var$n != widget.var$n) {
       oldWidget.var$n.unsub(_sub$n);
       _sub$n = widget.var$n.sub(_onVarChange);
     }
-""")}
-  }
+""")}  }
 
   @override
   void dispose() {

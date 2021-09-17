@@ -7,11 +7,8 @@ class Explainer {
 }
 
 ///
-abstract class Explainable {
-  final Explainer? explainer;
-  Explainable({
-    this.explainer,
-  });
+mixin Explainable {
+  Explainer? explainer;
 }
 
 ///
@@ -20,12 +17,13 @@ enum NodeKind {
   word,
   vocab,
   explainer,
-  typeBound,
+  type,
   var$,
-  funcType,
+  funcTypeDef,
   func,
   trait,
   traitObjType,
+  traitObjTypeUse,
   classType,
   classInstVar,
   classInstFunc,

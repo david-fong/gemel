@@ -1,4 +1,10 @@
 import '../node.dart';
+import 'vocab.dart';
+
+enum TypeKind { action, classObj, traitObj }
+
+/// low-level types
+/// primitives, arrays/buffers, actions, trait objects,
 
 ///
 abstract class Type {
@@ -9,7 +15,14 @@ abstract class Type {
 typedef TypeAliasId = int;
 
 ///
-class TypeAlias extends Explainable {
-  TypeAliasId id;
-  TypeAlias(this.id);
+class TypeAlias with Explainable {
+  final TypeAliasId id;
+  final Name name;
+  Type type;
+
+  TypeAlias(
+    this.id, {
+    required this.name,
+    required this.type,
+  });
 }

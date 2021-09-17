@@ -15,23 +15,29 @@ class DisplayRules {
   });
 }
 
-enum _CasingSeparator {
-  none,
-  dash,
-  underscore,
-}
-enum _CastingCaps {
-  none,
-  camel,
-  pascal,
-  all,
-}
+enum _CasingSeparator { none, dash, underscore }
+enum _CasingCaps { none, camel, pascal, all }
 
 ///
 class Casing {
   final _CasingSeparator separator;
-  final _CastingCaps caps;
+  final _CasingCaps caps;
   const Casing(this.separator, this.caps);
+  @override
+  String toString() {
+    const sepToString = {
+      _CasingSeparator.none: "",
+      _CasingSeparator.dash: "-",
+      _CasingSeparator.underscore: "_",
+    };
+    const capsToString = {
+      _CasingCaps.none: "aabbcc",
+      _CasingCaps.camel: "aaBbCc",
+      _CasingCaps.pascal: "AaBbCc",
+      _CasingCaps.all: "AABBCC",
+    };
+    return sepToString[separator]! + capsToString[caps]!;
+  }
 }
 
 ///
@@ -51,11 +57,7 @@ class _Casings {
 }
 
 ///
-enum TrailingListDelimiter {
-  beforeNewline,
-  never,
-  always,
-}
+enum TrailingListDelimiter { beforeNewline, never, always }
 
 ///
 class _LineBreakings {

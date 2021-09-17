@@ -1,16 +1,34 @@
-import 'dart:collection';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/widgets.dart'
+    show VoidCallback, Key, Widget, StatefulWidget, BuildContext, State;
 
+/// A [_VarSub1BuilderState] recieves this upon subscribing to a [Var4Widget].
+/// It must not (and does not) access any of the fields herein.
 ///
-class _VarRef4Widget<T> {
-  _VarRef4Widget(this.scheduleBuild, {required this.index});
+/// The widget's [State] must pass this to the [Var4Widget]'s [Var4Widget.unsub]
+/// method when [State.dispose]ing itself.
+class _VarSub4Widget<T> {
+  _VarSub4Widget(this.scheduleBuild, {required this.index});
+
+  /// The subscribing widget's [State.setState] function.
   final VoidCallback scheduleBuild;
+
+  /// Low-level book-keeping info for [Var4Widget]'s compact subscriber list.
   int index;
 }
 
-/// Specialized look-alike to [ValueNotifier].
-/// TODO it would be interesting in the future to play with the list resizing
-/// logic to see if there are more performant threshold calculations.
+/// Simplified look-alike to [ValueNotifier] optimized for performance and
+/// efficient storage.
+///
+/// It is O(1) for adding and removing listeners, and O(N) for dispatching
+/// notifications (where N is the number of listeners).
+///
+/// Note: An alternate implementation is to remove [_VarSub4Widget] and instead
+/// just use the callback like [ChangeNotifier], which is more space efficient,
+/// but changes removal performance to O(N). Note that [_BroadcastSubscription]
+/// in dart.async gets O(1) removal via prev/next linkages.
+/*
+TODO it would be interesting in the future to play with the list resizing
+logic to see if there are more performant threshold calculations. */
 class Var4Widget<T> {
   Var4Widget(this.val);
   final T Function() val;
@@ -18,10 +36,10 @@ class Var4Widget<T> {
   /// Needs fast insertion and removal. Order doesn't matter.
   /// Entries will not be contained in any other list instance.
   /// Could have used [LinkedList], but this is even better.
-  List<_VarRef4Widget?> _subs = List.filled(0, null);
+  List<_VarSub4Widget?> _subs = List.filled(0, null);
   int _numSubs = 0;
 
-  _VarRef4Widget<T> sub(VoidCallback scheduleBuild) {
+  _VarSub4Widget<T> sub(VoidCallback scheduleBuild) {
     if (_numSubs == 0) {
       _subs = List.filled(1, null);
     } else if (_numSubs == _subs.length) {
@@ -31,12 +49,12 @@ class Var4Widget<T> {
         _subs[i] = old[i];
       }
     }
-    final sub = _VarRef4Widget<T>(scheduleBuild, index: _numSubs);
+    final sub = _VarSub4Widget<T>(scheduleBuild, index: _numSubs);
     _subs[_numSubs++] = sub;
     return sub;
   }
 
-  void unsub(_VarRef4Widget<T> sub) {
+  void unsub(_VarSub4Widget<T> sub) {
     assert(identical(sub, _subs[sub.index]));
     _subs[sub.index] = _subs[--_numSubs];
     _subs[sub.index]!.index = sub.index;
@@ -50,6 +68,12 @@ class Var4Widget<T> {
     }
   }
 
+  /// Must be called after every change to the watched variable.
+  ///
+  /// Unlike [ChangeNotifier.notifyListeners], the only kind of listener will
+  /// be [State.setState], which frees this implementation from the complxity
+  /// and space cost of handling recursive notifications or listener removals
+  /// during notification.
   void notify() {
     for (var i = 0; i < _numSubs; i++) {
       _subs[i]?.scheduleBuild();

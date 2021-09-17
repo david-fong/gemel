@@ -2,12 +2,14 @@
 
 In no particular order
 
-- C# terse accessor syntax.
+- C# and kotlin terse accessor syntax.
+- Rust's, Java match expression.
 
 - Typescript similar notation for types and corresponding literal instantiations.
 
 - [dart's meta annotations](https://api.flutter.dev/flutter/meta/meta-library.html).
 - dart's continuation operator.
+  - Taking this as "normal", then returning `this` to get the same effect is just a crutch for the lack of this grammatical mechanism.
   - I like the concept, but I would look for something terser.
 
 - Rust traits and trait objects.
@@ -16,7 +18,6 @@ In no particular order
   - [C#](https://docs.microsoft.com/en-us/dotnet/standard/base-types/character-encoding)
   - [ecmascript](https://es5.github.io/x2.html#x2)
   - [dart](https://api.dart.dev/stable/2.13.4/dart-core/String-class.html)
-- Rust's match expression.
 
 - kotlin's various async things.
 - kotlin's separation of array streaming methods that delay evaluation and those that don't.
