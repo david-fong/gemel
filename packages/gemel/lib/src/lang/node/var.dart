@@ -8,13 +8,13 @@ typedef VariableId = int;
 class Variable with Explainable {
   final VariableId id;
   final Name name;
-  bool reassignable;
   Type type;
+  bool reassignable;
 
   Variable(
     this.id, {
     required this.name,
-    required this.reassignable,
     required this.type,
+    this.reassignable = false,
   });
 }

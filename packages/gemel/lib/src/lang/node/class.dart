@@ -8,17 +8,14 @@ import 'var.dart';
 typedef ClassId = int;
 
 ///
-class Class with Explainable {
+class Class with Explainable implements Type {
   final ClassId id;
   int zoneId;
   final Name name;
-  Type type;
 
-  final List<Type> typeInputs;
+  final List<TypeParam> typeInputs;
 
   _ClassEmbedderRequirements? embedder;
-
-  bool get hasIncompleteTraits;
 
   final List<ClassId> embedded;
 
@@ -33,13 +30,21 @@ class Class with Explainable {
     this.id, {
     required this.zoneId,
     required this.name,
-    required this.type,
     required this.typeInputs,
     required this.embedded,
     required this.parts,
     required this.actions,
     required this.traits,
   });
+
+  bool get hasIncompleteTraits {
+    throw UnimplementedError(); // TODO
+  }
+
+  @override
+  bool acceptsType(final Type other) {
+    throw UnimplementedError(); // TODO
+  }
 }
 
 ///
@@ -50,12 +55,14 @@ class _ClassEmbedderRequirements {
   });
 }
 
+typedef ClassPartId = int;
+
 /// left character is for public, middle for protected, right for private.
 enum ClassPartAccess { hhr, hhw, hrr, hrw, hww, rrr, rrw, rww, www }
 
 ///
 class ClassPart {
-  final VariableId id;
+  final ClassPartId id;
   final Name name;
   ClassPartAccess access;
   Type type;
@@ -68,14 +75,27 @@ class ClassPart {
   });
 }
 
+typedef ClassActionId = int;
+
 enum ClassActionAccess { hhc, hcc, ccc }
 
 ///
-class ClassAction extends Action {
+class ClassAction {
+  final ClassActionId id;
+  final Name name;
+  final ActionType type;
   ClassActionAccess access;
 
-  ClassAction({
+  /// See C++'s "friend" mechanism.
+  final List<Object>
+      accessSpecialCases; // TODO how to index to other things? classes, actions, class actions, etc
+
+  ClassAction(
+    this.id, {
+    required this.name,
+    required this.type,
     required this.access,
+    required this.accessSpecialCases,
   });
 }
 
@@ -90,17 +110,16 @@ class ClassTraitImpl {
 }
 
 ///
-// TODO this implementation doesn't match the way Action is doing things...
-class ClassType extends Type {
+class ClassTypeRef implements Type {
   final ClassId classId;
   List<Type> typeInputs;
 
-  ClassType({
+  ClassTypeRef({
     required this.classId,
     required this.typeInputs,
   });
   @override
-  bool accepts(Type other) {
+  bool acceptsType(final Type other) {
     // TODO: implement test
     throw UnimplementedError();
   }

@@ -1,50 +1,58 @@
 import '../node.dart';
 import 'vocab.dart';
 import 'type.dart';
-import 'var.dart';
 
 typedef ActionParamId = int;
 
 ///
 class ActionParams with Explainable {
-  /// Setting to null allows for "destructuring" syntax.
+  /// Set to [Null] for "destructuring" syntax.
   final Name? name;
-  final Type type;
+  Type type;
+  bool reassignable;
 
   ActionParams({
     required this.name,
     required this.type,
+    this.reassignable = false,
   });
 }
 
 ///
-class ActionTypeDef extends Type {
+class ActionType implements Type {
+  final List<TypeParam> typeParams;
   final Type answerType;
   final ActionParams params;
 
-  ActionTypeDef({
+  ActionType({
+    required this.typeParams,
     required this.answerType,
     required this.params,
   });
 
   @override
-  bool accepts(Type other) =>
-      other is ActionTypeDef &&
-      answerType.accepts(other.answerType) &&
-      params.type.accepts(other.params.type);
+  bool acceptsType(final Type other) =>
+      other is ActionType &&
+      answerType.acceptsType(other.answerType) &&
+      params.type.acceptsType(other.params.type);
 }
 
 typedef ActionId = int;
 
 ///
+class ActionBody {}
+
+///
 class Action with Explainable {
   final ActionId id;
   final Name name;
-  ActionTypeDef type;
+  final ActionType type;
+  final ActionBody? body;
 
   Action(
     this.id, {
     required this.name,
     required this.type,
+    required this.body,
   });
 }

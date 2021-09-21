@@ -34,15 +34,14 @@ enum NodeKind {
 
 ///
 enum StatementNodeKind {
-  statement, // is this necessary?
-  statementScope,
-  statementHave,
-  statementEdit,
-  statementWhen,
-  statementFor,
-  statementWhile,
-  statementBreak,
-  statementCont,
-  statementTry,
-  statementAnswer,
+  scope,
+  have,
+  edit,
+  when,
+  for$,
+  while$,
+  break$,
+  cont,
+  try$,
+  answer$,
 }

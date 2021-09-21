@@ -138,7 +138,8 @@ class VarSub2Builder<T1, T2, C> extends StatefulWidget {
 
   final Var4Widget<T1> var1;
   final Var4Widget<T2> var2;
-  final Widget Function(BuildContext context, T1 v1, T2 v2, C? children) builder;
+  final Widget Function(BuildContext context, T1 v1, T2 v2, C? children)
+      builder;
   final C? children;
 
   @override
@@ -178,8 +179,8 @@ class _VarSub2BuilderState<T1, T2, C> extends State<VarSub2Builder<T1, T2, C>> {
   void _onVarChange() => setState(() {});
 
   @override
-  Widget build(BuildContext context) =>
-      widget.builder(context, widget.var1.val(), widget.var2.val(), widget.children);
+  Widget build(BuildContext context) => widget.builder(
+      context, widget.var1.val(), widget.var2.val(), widget.children);
 }
 
 class VarSub3Builder<T1, T2, T3, C> extends StatefulWidget {
@@ -195,14 +196,16 @@ class VarSub3Builder<T1, T2, T3, C> extends StatefulWidget {
   final Var4Widget<T1> var1;
   final Var4Widget<T2> var2;
   final Var4Widget<T3> var3;
-  final Widget Function(BuildContext context, T1 v1, T2 v2, T3 v3, C? children) builder;
+  final Widget Function(BuildContext context, T1 v1, T2 v2, T3 v3, C? children)
+      builder;
   final C? children;
 
   @override
   State<StatefulWidget> createState() => _VarSub3BuilderState<T1, T2, T3, C>();
 }
 
-class _VarSub3BuilderState<T1, T2, T3, C> extends State<VarSub3Builder<T1, T2, T3, C>> {
+class _VarSub3BuilderState<T1, T2, T3, C>
+    extends State<VarSub3Builder<T1, T2, T3, C>> {
   late _VarSub4Widget<T1> _sub1;
   late _VarSub4Widget<T2> _sub2;
   late _VarSub4Widget<T3> _sub3;
@@ -242,8 +245,8 @@ class _VarSub3BuilderState<T1, T2, T3, C> extends State<VarSub3Builder<T1, T2, T
   void _onVarChange() => setState(() {});
 
   @override
-  Widget build(BuildContext context) =>
-      widget.builder(context, widget.var1.val(), widget.var2.val(), widget.var3.val(), widget.children);
+  Widget build(BuildContext context) => widget.builder(context,
+      widget.var1.val(), widget.var2.val(), widget.var3.val(), widget.children);
 }
 
 class VarSub4Builder<T1, T2, T3, T4, C> extends StatefulWidget {
@@ -261,14 +264,17 @@ class VarSub4Builder<T1, T2, T3, T4, C> extends StatefulWidget {
   final Var4Widget<T2> var2;
   final Var4Widget<T3> var3;
   final Var4Widget<T4> var4;
-  final Widget Function(BuildContext context, T1 v1, T2 v2, T3 v3, T4 v4, C? children) builder;
+  final Widget Function(
+      BuildContext context, T1 v1, T2 v2, T3 v3, T4 v4, C? children) builder;
   final C? children;
 
   @override
-  State<StatefulWidget> createState() => _VarSub4BuilderState<T1, T2, T3, T4, C>();
+  State<StatefulWidget> createState() =>
+      _VarSub4BuilderState<T1, T2, T3, T4, C>();
 }
 
-class _VarSub4BuilderState<T1, T2, T3, T4, C> extends State<VarSub4Builder<T1, T2, T3, T4, C>> {
+class _VarSub4BuilderState<T1, T2, T3, T4, C>
+    extends State<VarSub4Builder<T1, T2, T3, T4, C>> {
   late _VarSub4Widget<T1> _sub1;
   late _VarSub4Widget<T2> _sub2;
   late _VarSub4Widget<T3> _sub3;
@@ -315,8 +321,13 @@ class _VarSub4BuilderState<T1, T2, T3, T4, C> extends State<VarSub4Builder<T1, T
   void _onVarChange() => setState(() {});
 
   @override
-  Widget build(BuildContext context) =>
-      widget.builder(context, widget.var1.val(), widget.var2.val(), widget.var3.val(), widget.var4.val(), widget.children);
+  Widget build(BuildContext context) => widget.builder(
+      context,
+      widget.var1.val(),
+      widget.var2.val(),
+      widget.var3.val(),
+      widget.var4.val(),
+      widget.children);
 }
 
 class VarSub5Builder<T1, T2, T3, T4, T5, C> extends StatefulWidget {
@@ -336,14 +347,18 @@ class VarSub5Builder<T1, T2, T3, T4, T5, C> extends StatefulWidget {
   final Var4Widget<T3> var3;
   final Var4Widget<T4> var4;
   final Var4Widget<T5> var5;
-  final Widget Function(BuildContext context, T1 v1, T2 v2, T3 v3, T4 v4, T5 v5, C? children) builder;
+  final Widget Function(
+          BuildContext context, T1 v1, T2 v2, T3 v3, T4 v4, T5 v5, C? children)
+      builder;
   final C? children;
 
   @override
-  State<StatefulWidget> createState() => _VarSub5BuilderState<T1, T2, T3, T4, T5, C>();
+  State<StatefulWidget> createState() =>
+      _VarSub5BuilderState<T1, T2, T3, T4, T5, C>();
 }
 
-class _VarSub5BuilderState<T1, T2, T3, T4, T5, C> extends State<VarSub5Builder<T1, T2, T3, T4, T5, C>> {
+class _VarSub5BuilderState<T1, T2, T3, T4, T5, C>
+    extends State<VarSub5Builder<T1, T2, T3, T4, T5, C>> {
   late _VarSub4Widget<T1> _sub1;
   late _VarSub4Widget<T2> _sub2;
   late _VarSub4Widget<T3> _sub3;
@@ -397,6 +412,12 @@ class _VarSub5BuilderState<T1, T2, T3, T4, T5, C> extends State<VarSub5Builder<T
   void _onVarChange() => setState(() {});
 
   @override
-  Widget build(BuildContext context) =>
-      widget.builder(context, widget.var1.val(), widget.var2.val(), widget.var3.val(), widget.var4.val(), widget.var5.val(), widget.children);
+  Widget build(BuildContext context) => widget.builder(
+      context,
+      widget.var1.val(),
+      widget.var2.val(),
+      widget.var3.val(),
+      widget.var4.val(),
+      widget.var5.val(),
+      widget.children);
 }
