@@ -30,15 +30,18 @@ class _VarSub4Widget<T> {
 TODO it would be interesting in the future to play with the list resizing
 logic to see if there are more performant threshold calculations. */
 class Var4Widget<T> {
-  Var4Widget(this.val);
   final T Function() val;
 
   /// Needs fast insertion and removal. Order doesn't matter.
   /// Entries will not be contained in any other list instance.
   /// Could have used [LinkedList], but this is even better.
-  List<_VarSub4Widget?> _subs = List.filled(0, null);
+  List<_VarSub4Widget?> _subs;
   int _numSubs = 0;
 
+  Var4Widget(this.val, {int initCapacity = 0})
+      : _subs = List.filled(initCapacity, null);
+
+  /// [scheduleBuild] should be a [State.setState] tearoff.
   _VarSub4Widget<T> sub(VoidCallback scheduleBuild) {
     if (_numSubs == 0) {
       _subs = List.filled(1, null);
@@ -59,7 +62,8 @@ class Var4Widget<T> {
     _subs[sub.index] = _subs[--_numSubs];
     _subs[sub.index]!.index = sub.index;
     _subs[_numSubs] = null;
-    if (_numSubs <= _subs.length / 2) {
+    if (_numSubs <= _subs.length / 4) {
+      // ^use `growth_factor^2`
       final old = _subs;
       _subs = List.filled(_numSubs, null);
       for (var i = 0; i < _numSubs; i++) {

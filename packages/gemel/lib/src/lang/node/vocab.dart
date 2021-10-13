@@ -1,4 +1,4 @@
-import '../node.dart';
+import '../explainer.dart';
 
 enum WordKind {
   noun,

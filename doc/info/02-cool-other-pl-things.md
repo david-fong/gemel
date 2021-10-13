@@ -1,6 +1,8 @@
 # Cool Things in Other Languages
 
-In no particular order
+In no particular order:
+
+- [Ada Ranged Integers](https://learn.adacore.com/courses/intro-to-ada/chapters/strongly_typed_language.html#integers)
 
 - C# and kotlin terse accessor syntax.
 - Rust's, Java match expression.
@@ -24,3 +26,11 @@ In no particular order
 - kotlin's async functions being able to be called as blocking functions in functions not marked as async. [docs](https://kotlinlang.org/docs/async-programming.html#coroutines)
 - kotlin and C++ defaulting classes to be sealed and methods to be non-virtual.
 - [kotlin's solution to the diamond problem](https://en.wikipedia.org/wiki/Multiple_inheritance).
+
+# Other Language Regrets
+
+Perhaps worth mentioning. Note to self: try to take into account the language's design goals when interpreting these writings. Context matters.
+
+- [NodeJS](https://medium.com/@imior/10-things-i-regret-about-node-js-ryan-dahl-2ba71ff6b4dc)
+- [Swift](https://belkadan.com/blog/tags/swift-regrets/)
+- [The Post-JS Apocalypse - Douglas Crockford](https://www.youtube.com/watch?v=NPB34lDZj3E&ab_channel=ConFooDeveloperConference)

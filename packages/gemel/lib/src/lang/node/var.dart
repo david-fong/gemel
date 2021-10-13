@@ -1,4 +1,4 @@
-import '../node.dart';
+import '../explainer.dart';
 import 'vocab.dart';
 import 'type.dart';
 

@@ -1,4 +1,4 @@
-import '../node.dart';
+import '../explainer.dart';
 import 'vocab.dart';
 import 'type.dart';
 
@@ -19,7 +19,7 @@ class ActionParams with Explainable {
 }
 
 ///
-class ActionType implements Type {
+class ActionType with Type {
   final List<TypeParam> typeParams;
   final Type answerType;
   final ActionParams params;

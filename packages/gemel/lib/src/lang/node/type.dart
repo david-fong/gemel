@@ -1,5 +1,6 @@
-import '../node.dart';
+import '../explainer.dart';
 import 'vocab.dart';
+import 'package:meta/meta.dart';
 
 enum TypeKind { action, classObj, traitObj }
 
@@ -10,6 +11,8 @@ enum TypeKind { action, classObj, traitObj }
 abstract class Type {
   /// Check if [other] can be treated as [this].
   bool acceptsType(Type other);
+  @nonVirtual
+  bool usableAs(Type other) => other.acceptsType(this);
 }
 
 typedef TypeParamId = int;
@@ -30,7 +33,7 @@ enum TypeParamFlow {
 }
 
 /// AKA Generic parameter
-class TypeParam implements Type {
+class TypeParam with Type {
   final TypeParamId id;
   final Name name;
   Type type;
@@ -66,7 +69,7 @@ class TypeAlias with Explainable {
 
 ///
 // TODO where to put this?
-enum Id {
+enum TypeId {
   nothing,
   bit,
   u08,

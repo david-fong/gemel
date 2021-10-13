@@ -1,4 +1,4 @@
-import '../node.dart';
+import '../explainer.dart';
 import 'vocab.dart';
 import 'action.dart';
 import 'trait.dart';
@@ -8,7 +8,7 @@ import 'var.dart';
 typedef ClassId = int;
 
 ///
-class Class with Explainable implements Type {
+class Class with Explainable, Type {
   final ClassId id;
   int zoneId;
   final Name name;
@@ -58,19 +58,19 @@ class _ClassEmbedderRequirements {
 typedef ClassPartId = int;
 
 /// left character is for public, middle for protected, right for private.
-enum ClassPartAccess { hhr, hhw, hrr, hrw, hww, rrr, rrw, rww, www }
+enum ClassPartPermission { hhr, hhw, hrr, hrw, hww, rrr, rrw, rww, www }
 
 ///
 class ClassPart {
   final ClassPartId id;
   final Name name;
-  ClassPartAccess access;
+  ClassPartPermission permission;
   Type type;
 
   ClassPart(
     this.id, {
     required this.name,
-    required this.access,
+    required this.permission,
     required this.type,
   });
 }
@@ -110,7 +110,7 @@ class ClassTraitImpl {
 }
 
 ///
-class ClassTypeRef implements Type {
+class ClassTypeRef with Type {
   final ClassId classId;
   List<Type> typeInputs;
 

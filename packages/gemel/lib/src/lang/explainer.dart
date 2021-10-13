@@ -12,7 +12,7 @@ mixin Explainable {
 }
 
 ///
-enum NodeKind {
+/* enum NodeKind {
   zone,
   word,
   vocab,
@@ -30,10 +30,10 @@ enum NodeKind {
   class$,
   constNum,
   constText,
-}
+} */
 
 ///
-enum StatementNodeKind {
+/* enum StatementNodeKind {
   scope,
   have,
   edit,
@@ -44,4 +44,4 @@ enum StatementNodeKind {
   cont,
   try$,
   answer$,
-}
+} */

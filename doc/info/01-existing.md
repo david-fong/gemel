@@ -29,6 +29,7 @@
 ## Collaborative Software Development
 
 - [Radicle](https://radicle.xyz/)
+- [JetBrains Space](https://www.jetbrains.com/space/)
 
 ## Fields of Study
 

@@ -1,11 +1,11 @@
-import '../node.dart';
+import '../explainer.dart';
 import 'vocab.dart';
 import 'type.dart';
 
 typedef EnumId = int;
 
 ///
-class Enum with Explainable implements Type {
+class Enum with Explainable, Type {
   final EnumId id;
   final Name name;
 

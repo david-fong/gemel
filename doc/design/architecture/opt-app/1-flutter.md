@@ -55,9 +55,11 @@ Need something that:
 
 All these interfaces are part of the Flutter foundation library (which I presumably don't want in the server package), so I can't design my AST nodes with all the fields being `ValueNotifiers`.
 
-Write some [code generation](https://www.raywenderlich.com/22180993-flutter-code-generation-getting-started) scripting for the clientside to generate extensions of the AST nodes. Generate fields like `_getField1() => field1;` which will be passed to construct `Var4Widget`s (anonymous functions also work, but they will produce a new closure each time, which may not be desirable. This is only really necessary for option 2). Override setter for `field1` to also call `notify` on a parallel `Var4Widget` instance tracking `field1` (via `_getField1`).
+Write some [code generation](https://www.raywenderlich.com/22180993-flutter-code-generation-getting-started) scripting for the clientside to generate extensions of the AST nodes. Generate fields like `_getField1() => field1;` which will be passed to construct `Var4Widget`s (anonymous functions also work, but they will produce a new closure each time, which may not be desirable. This is only really necessary for option 2. too bad tearoff syntax for getter and setters aren't in dart right now). Override setter for `field1` to also call `notify` on a parallel `Var4Widget` instance tracking `field1` (via `_getField1`).
 
-- Option 1: Generate a parallel class for each AST node where all the fields are replaced by `Var4Widget`s. Then subclass the originals and add them through composition (I like this better than extension/mixin because of the cognitive information scoping).
+For Lists, make something like [mobx's `ObservableList`](https://github.com/mobxjs/mobx.dart/tree/master/mobx/lib/src/api/observable_collections/observable_list.dart). A naive implementation would be to make use of `ListMixin` (which would do excess notifications for batch-type operations). Probably better to take inspiration from [`DelegatingList`](https://github.com/dart-lang/collection/blob/master/lib/src/wrappers.dart) and manually specify all the overrides.
+
+- Option 1: Generate a parallel class extending each AST node with private `Var4Widget` fields. Implement overriding getters and setters to do the things.
 
 - Option 2 (probably more space efficient in cases where it is likely that a large proportion of listenable variables have no listeners, but adds slight lookup overhead to notifying subscribers of new values): Generate extension methods for sub/unsub on the extensions of the nodes, which lazily generate/remove the listener in a global pool as needed, keying it by the `_getFieldN` tearoff.
 
@@ -70,3 +72,7 @@ Interested in using. Will try it out.
 - https://flutter.dev/docs/development/platform-integration/c-interop
 - https://pub.dev/packages/ffigen
 - https://github.com/samber/llvm_dart_binding
+
+## Random
+
+- [A cool hackernews discussion about dartfor UI vs functional languages and immediate-mode UI](https://news.ycombinator.com/item?id=19748982)

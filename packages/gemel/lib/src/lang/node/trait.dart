@@ -1,4 +1,6 @@
-import '../node.dart';
+import 'dart:collection';
+
+import '../explainer.dart';
 import 'vocab.dart';
 import 'type.dart';
 import 'action.dart';
@@ -6,10 +8,14 @@ import 'class.dart';
 
 typedef TraitId = int;
 
+/// "s" means "sealed for implementation", "o" means "open for implementation".
+enum TraitPermission { sso, soo, ooo }
+
 ///
-class Trait with Explainable implements Type {
+class Trait with Explainable, Type {
   final TraitId id;
   final Name name;
+  TraitPermission permission;
   final List<TypeParam> typeParams;
   final List<TraitRef> includedTraits;
   final List<ActionType> actions;
@@ -17,6 +23,7 @@ class Trait with Explainable implements Type {
   Trait(
     this.id, {
     required this.name,
+    required this.permission,
     required this.typeParams,
     required this.includedTraits,
     required this.actions,
@@ -63,7 +70,7 @@ class Trait with Explainable implements Type {
 }
 
 ///
-class TraitRef implements Type {
+class TraitRef with Type {
   TraitId traitId;
   // TODO specializations of typeParams.
 

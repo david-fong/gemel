@@ -41,7 +41,7 @@ Preface: None of these are "ideological" non-goals. They simply exist to help me
 
 ### What impact I want gemel to have
 
-The hope is that gemel can faithfully demonstrate benefits of structured programming at a high enough degree of quality to spark other peoples' interest in moving toward such a direction when designing future programming ecosystems.
+The hope is that gemel can faithfully demonstrate benefits of structural tooling for programming with a high enough degree of quality to spark other peoples' interest in moving toward such a direction when designing future programming ecosystems.
 
 I would love for gemel to gain interest as a proof-of-concept and exploring-ground for building a human-friendlier programming ecosystem. I would love for people to eventually join the continual effort to improve it. The intention is not for gemel itself to become widely depended upon for real-world work.
 

@@ -3,6 +3,8 @@
 
 ### Language Study
 
+- https://en.wikipedia.org/wiki/Linguistic_relativity#Programming_languages
+
 - https://en.wikipedia.org/wiki/Linguistic_typology
 - https://en.wikipedia.org/wiki/Branching_(linguistics)
 - https://en.wikipedia.org/wiki/Word_order
